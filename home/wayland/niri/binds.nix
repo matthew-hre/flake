@@ -58,9 +58,8 @@
     "Mod+Shift+Ctrl+Left".action = consume-or-expel-window-left;
     "Mod+Shift+Ctrl+Right".action = consume-or-expel-window-right;
 
-    "Mod+Shift+S".action = screenshot;
-    "Print".action = screenshot;
-    "Alt+Print".action = screenshot-window;
+    "Mod+Shift+S".action.screenshot = [];
+    "Print".action.screenshot = [];
 
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 

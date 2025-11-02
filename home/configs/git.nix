@@ -10,13 +10,17 @@
   config = lib.mkIf config.home.git.enable {
     programs.git = {
       enable = true;
-      userName = "Matthew Hrehirchuk";
-      userEmail = "matthew_hre@outlook.com";
 
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Matthew Hrehirchuk";
+          email = "matthew_hre@outlook.com";
+        };
+
         include = {
           path = "/home/matthew_hre/.config/git/themes.gitconfig";
         };
+
         core = {pager = "bat";};
         blame = {pager = "bat";};
         delta = {
