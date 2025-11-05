@@ -37,7 +37,7 @@ in {
           (makeCommand "swww-daemon")
           (makeCommand "NetworkManager")
           (makeCommand "qs")
-          {command = ["wl-paste" "--watch" "cliphist" "store"];}
+          {command = ["stash" "watch"];}
         ];
 
         cursor = {

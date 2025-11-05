@@ -1,8 +1,17 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  stashPkg = inputs.stash.packages.x86_64-linux.stash;
+in {
   environment.systemPackages = with pkgs; [
     swww # needs to be installed at the system level
     polkit_gnome
+    stashPkg
   ];
+
+  systemd.packages = [stashPkg];
 
   programs.niri = {
     enable = true;

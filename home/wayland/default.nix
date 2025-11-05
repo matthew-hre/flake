@@ -52,7 +52,6 @@ in {
           nautilus
           pwvucontrol
 
-          wl-clipboard
           cliphist
           hyprpicker
 

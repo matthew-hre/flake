@@ -37,6 +37,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stash.url = "github:NotAShelf/stash";
+
     vicinae.url = "github:vicinaehq/vicinae";
   };
 

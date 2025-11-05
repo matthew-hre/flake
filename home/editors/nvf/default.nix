@@ -29,7 +29,7 @@
         };
         preventJunkFiles = true;
 
-        clipboard.providers.wl-copy.enable = true;
+        clipboard.enable = true;
 
         keymaps = [
           {

@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "crane": {
+      "locked": {
+        "lastModified": 1754269165,
+        "narHash": "sha256-0tcS8FHd4QjbCVoxN9jI+PjHgA4vc/IjkUSp+N3zy0U=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "444e81206df3f7d92780680e45858e31d2f07a08",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "dustpan": {
       "inputs": {
         "home-manager": "home-manager",
@@ -204,11 +219,11 @@
         "zon2nix": "zon2nix"
       },
       "locked": {
-        "lastModified": 1762096478,
-        "narHash": "sha256-diZ5P0TPJgwE7NS3QwzMwkYT8I+DtLUUwuLlG9ql4oM=",
+        "lastModified": 1762353274,
+        "narHash": "sha256-CJCPZ5VZSfBKRpVUuSgpH4dJsodAwbky3m7aPhb8hEU=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "955087f5f29261e432275d808e03f1acfa551c05",
+        "rev": "d43be638516d5a1f671c74a67b10724fbb363f6b",
         "type": "github"
       },
       "original": {
@@ -485,6 +500,22 @@
     },
     "nixpkgs_6": {
       "locked": {
+        "lastModified": 1754725699,
+        "narHash": "sha256-iAcj9T/Y+3DBy2J0N+yF9XQQQ8IEb5swLFzs23CdP88=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_7": {
+      "locked": {
         "lastModified": 1759036355,
         "narHash": "sha256-0m27AKv6ka+q270dw48KflE0LwQYrO7Fm4/2//KCVWg=",
         "owner": "nixos",
@@ -555,6 +586,7 @@
         "nvf": "nvf",
         "quickshell": "quickshell",
         "solaar": "solaar",
+        "stash": "stash",
         "vicinae": "vicinae"
       }
     },
@@ -602,6 +634,25 @@
         "owner": "Svenum",
         "ref": "main",
         "repo": "Solaar-Flake",
+        "type": "github"
+      }
+    },
+    "stash": {
+      "inputs": {
+        "crane": "crane",
+        "nixpkgs": "nixpkgs_6"
+      },
+      "locked": {
+        "lastModified": 1761645780,
+        "narHash": "sha256-TDQuNOtz1CtKZ3tQXKkJZpF2EpQcgyfD6HpGD2tpUf8=",
+        "owner": "NotAShelf",
+        "repo": "stash",
+        "rev": "96089f364b976b9d97c54fc703a3a9224ed2e401",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NotAShelf",
+        "repo": "stash",
         "type": "github"
       }
     },
@@ -701,7 +752,7 @@
     "vicinae": {
       "inputs": {
         "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_7"
       },
       "locked": {
         "lastModified": 1761824697,
