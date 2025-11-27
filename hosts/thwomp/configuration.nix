@@ -6,30 +6,32 @@
   pkgs,
   inputs,
   ...
-}: let
-  system = ../../system;
-in {
+}: {
   imports = [
     ./hardware-configuration.nix
-    "${system}/core"
-    "${system}/shared"
-    "${system}/hardware/amd.nix"
-    "${system}/hardware/bluetooth.nix"
-    "${system}/network"
-    "${system}/programs/discord.nix"
-    "${system}/programs/fonts.nix"
-    "${system}/programs/libre.nix"
-    "${system}/programs/plasma.nix"
-    "${system}/programs/steam.nix"
-    "${system}/services/boot.nix"
-    "${system}/services/docker.nix"
-    "${system}/services/greetd.nix"
-    "${system}/services/openssh.nix"
-    "${system}/services/openvpn.nix"
-    "${system}/services/pipewire.nix"
+    ../../system
 
     inputs.solaar.nixosModules.default
   ];
+
+  modules = {
+    hardware.amd.enable = true;
+    hardware.bluetooth.enable = true;
+
+    programs.discord.enable = true;
+    programs.fonts.enable = true;
+    programs.libre.enable = true;
+    programs.plasma.enable = true;
+    programs.steam.enable = true;
+
+    services.boot.enable = true;
+    services.docker.enable = true;
+    services.greetd.enable = true;
+    services.network.enable = true;
+    services.openssh.enable = true;
+    services.openvpn.enable = true;
+    services.pipewire.enable = true;
+  };
 
   home-manager.users.matthew_hre.home = {
     bat.enable = true;

@@ -1,9 +1,18 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    hunspell
-    hunspellDicts.en_CA
-    hunspellDicts.en_US
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  options.modules.programs.libre.enable = lib.mkEnableOption "libreoffice support";
 
-    libreoffice-qt
-  ];
+  config = lib.mkIf config.modules.programs.libre.enable {
+    environment.systemPackages = with pkgs; [
+      hunspell
+      hunspellDicts.en_CA
+      hunspellDicts.en_US
+
+      libreoffice-qt
+    ];
+  };
 }

@@ -1,28 +1,31 @@
-{pkgs, ...}: let
-  system = ../../system;
-in {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    "${system}/core"
-    "${system}/shared"
-    "${system}/hardware/bluetooth.nix"
-    "${system}/hardware/fprintd.nix"
-    "${system}/hardware/fwupd.nix"
-    "${system}/network"
-    "${system}/programs/discord.nix"
-    "${system}/programs/fonts.nix"
-    "${system}/programs/libre.nix"
-    "${system}/programs/niri.nix"
-    "${system}/programs/steam.nix"
-    "${system}/programs/xdg.nix"
-    "${system}/services/boot.nix"
-    "${system}/services/docker.nix"
-    "${system}/services/greetd.nix"
-    "${system}/services/openssh.nix"
-    "${system}/services/openvpn.nix"
-    "${system}/services/pipewire.nix"
-    "${system}/services/power.nix"
+    ../../system
   ];
+
+  modules = {
+    hardware.amd.enable = true;
+    hardware.bluetooth.enable = true;
+    hardware.fprintd.enable = true;
+    hardware.fwupd.enable = true;
+
+    programs.discord.enable = true;
+    programs.fonts.enable = true;
+    programs.libre.enable = true;
+    programs.niri.enable = true;
+    programs.steam.enable = true;
+    programs.xdg.enable = true;
+
+    services.boot.enable = true;
+    services.docker.enable = true;
+    services.greetd.enable = true;
+    services.network.enable = true;
+    services.openssh.enable = true;
+    services.openvpn.enable = true;
+    services.pipewire.enable = true;
+    services.power.enable = true;
+  };
 
   home-manager.users.matthew_hre.home = {
     bat.enable = true;
@@ -45,13 +48,6 @@ in {
     wayland.enable = true;
     wayland.waybar.enable = false;
     wayland.quickshell.enable = true;
-  };
-
-  services.hibernation = {
-    enable = true;
-    swapDeviceUUID = "773e93e2-0dd1-48f1-95a8-7f8acb4fb177";
-    lidAction = "suspend-then-hibernate";
-    hibernateDelay = "30m";
   };
 
   networking.hostName = "toad";

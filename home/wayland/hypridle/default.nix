@@ -34,7 +34,6 @@ in {
             timeout = timeout + 10;
             on-timeout = lock;
           }
-          # using system-level suspend-then-hibernate via logind
         ];
       };
     };

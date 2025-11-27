@@ -1,0 +1,25 @@
+{
+  imports = [
+    ./base.nix
+    ./hardware/amd.nix
+    ./hardware/bluetooth.nix
+    ./hardware/fprintd.nix
+    ./hardware/fwupd.nix
+    ./programs/discord.nix
+    ./programs/fonts.nix
+    ./programs/libre.nix
+    ./programs/niri.nix
+    ./programs/plasma.nix
+    ./programs/steam.nix
+    ./programs/xdg.nix
+    ./services/boot.nix
+    ./services/docker.nix
+    ./services/greetd.nix
+    ./services/network.nix
+    ./services/openssh.nix
+    ./services/openvpn.nix
+    ./services/pipewire.nix
+    ./services/power.nix
+    ./services/security.nix
+  ];
+}

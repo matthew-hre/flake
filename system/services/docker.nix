@@ -1,8 +1,16 @@
 {
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = false;
-  };
+  config,
+  lib,
+  ...
+}: {
+  options.modules.services.docker.enable = lib.mkEnableOption "docker support";
 
-  systemd.services."docker.socket".wantedBy = ["sockets.target"];
+  config = lib.mkIf config.modules.services.docker.enable {
+    virtualisation.docker = {
+      enable = true;
+      enableOnBoot = false;
+    };
+
+    systemd.services."docker.socket".wantedBy = ["sockets.target"];
+  };
 }

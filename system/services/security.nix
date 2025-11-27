@@ -9,13 +9,13 @@ in {
     sudo.enable = true;
     rtkit.enable = true;
 
-    pam.services = {
+    pam.services = lib.mkIf toad {
       hyprlock = {
-        text = lib.mkIf toad "auth include login";
+        text = "auth include login";
         enableGnomeKeyring = true;
       };
 
-      "polkit-1" = lib.mkIf toad {
+      "polkit-1" = {
         fprintAuth = true;
       };
 

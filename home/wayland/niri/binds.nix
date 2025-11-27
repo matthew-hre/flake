@@ -6,16 +6,10 @@
   programs.niri.settings.binds = with config.lib.niri.actions; let
     sh = spawn "sh" "-c";
     powerMenu = pkgs.writeShellScript "power-menu" ''
-      choice=$(echo -e " Lock\n󰒲 Suspend\n󰋊 Hibernate\n Reboot\n⏻ Shutdown" | fuzzel --dmenu -l 7 -p "󰚥 ")
+      choice=$(echo -e " Lock\n Reboot\n⏻ Shutdown" | fuzzel --dmenu -l 7 -p "󰚥 ")
       case "$choice" in
         *"Lock")
           hyprlock
-          ;;
-        *"Suspend")
-          systemctl suspend
-          ;;
-        *"Hibernate")
-          systemctl hibernate
           ;;
         *"Reboot")
           systemctl reboot
