@@ -1,26 +1,32 @@
 {
-  hostname,
+  config,
   lib,
   ...
-}: let
-  toad = hostname == "toad";
-in {
-  security = {
-    sudo.enable = true;
-    rtkit.enable = true;
-
-    pam.services = lib.mkIf toad {
-      hyprlock = {
-        text = "auth include login";
-        enableGnomeKeyring = true;
-      };
-
-      "polkit-1" = {
-        fprintAuth = true;
-      };
-
-      greetd.enableGnomeKeyring = true;
-      login.enableGnomeKeyring = true;
-    };
+}: {
+  options.modules.services.security = {
+    enable = lib.mkEnableOption "base security";
+    fingerprintPam.enable = lib.mkEnableOption "fingerprint PAM integration";
   };
+
+  config = let
+    cfg = config.modules.services.security;
+  in
+    lib.mkMerge [
+      {
+        security.sudo.enable = true;
+        security.rtkit.enable = true;
+      }
+
+      (lib.mkIf cfg.fingerprintPam.enable {
+        security.pam.services = {
+          hyprlock = {
+            text = "auth include login";
+            enableGnomeKeyring = true;
+          };
+          "polkit-1".fprintAuth = true;
+          greetd.enableGnomeKeyring = true;
+          login.enableGnomeKeyring = true;
+        };
+      })
+    ];
 }

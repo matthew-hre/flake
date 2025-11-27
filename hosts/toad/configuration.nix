@@ -25,6 +25,8 @@
     services.openvpn.enable = true;
     services.pipewire.enable = true;
     services.power.enable = true;
+    services.security.enable = true;
+    services.security.fingerprintPam.enable = true;
   };
 
   home-manager.users.matthew_hre.home = {

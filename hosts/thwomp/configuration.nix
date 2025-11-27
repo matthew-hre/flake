@@ -31,6 +31,7 @@
     services.openssh.enable = true;
     services.openvpn.enable = true;
     services.pipewire.enable = true;
+    services.security.enable = true;
   };
 
   home-manager.users.matthew_hre.home = {
