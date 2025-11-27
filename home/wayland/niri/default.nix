@@ -10,7 +10,6 @@
   };
 in {
   imports = [
-    inputs.niri.homeModules.niri
     ./binds.nix
     ./rules.nix
   ];
