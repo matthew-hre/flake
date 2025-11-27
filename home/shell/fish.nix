@@ -16,6 +16,9 @@
         set --universal pure_enable_nixdevshell true
         set --universal pure_symbol_nixdevshell_prefix " "
 
+        # https://github.com/NixOS/nixpkgs/issues/462025
+        set -p fish_complete_path ${pkgs.fish}/share/fish/completions
+
         function _pure_prompt_nixdevshell \
             --description "Indicate if nix develop shell is activated (icon only)"
 
