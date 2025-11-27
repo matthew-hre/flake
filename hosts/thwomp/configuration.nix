@@ -34,25 +34,6 @@
     services.security.enable = true;
   };
 
-  home-manager.users.matthew_hre.home = {
-    bat.enable = true;
-    btop.enable = true;
-    direnv.enable = true;
-    fastfetch.enable = true;
-    fuzzel.enable = true;
-    garbage.enable = true;
-    git.enable = true;
-    ssh.enable = true;
-    vicinae.enable = false;
-
-    editors.helix.enable = true;
-    editors.nvf.enable = true;
-    editors.vscode.enable = true;
-
-    shell.fish.enable = true;
-    shell.ghostty.enable = true;
-  };
-
   networking.hostName = "thwomp";
 
   services.xserver.enable = true;
@@ -69,8 +50,6 @@
       ExecStart = ''/bin/sh -c 'echo XHC2 > /proc/acpi/wakeup' '';
     };
   };
-
-  systemd.services.NetworkManager-wait-online.enable = false;
 
   hardware.enableAllFirmware = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;

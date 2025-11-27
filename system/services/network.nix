@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  options.modules.services.network.enable = lib.mkEnableOption "network support";
+  options.modules.services.network.enable = lib.mkEnableOption "networking support";
 
   config = lib.mkIf config.modules.services.network.enable {
     networking = {
@@ -14,5 +14,7 @@
       };
       firewall.enable = true;
     };
+
+    systemd.services.NetworkManager-wait-online.enable = false;
   };
 }

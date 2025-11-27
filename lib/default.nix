@@ -14,7 +14,7 @@ in {
         modules
         ++ [
           inputs.home-manager.nixosModules.home-manager
-          ../home
+          ../users/matthew_hre/${hostname}.nix
           {
             environment.systemPackages = [
               inputs.ghostty.packages.${system}.default
