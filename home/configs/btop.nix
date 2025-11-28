@@ -13,17 +13,19 @@
     programs.btop = {
       enable = true;
       package =
-        lib.mkIf config.home.btop.amdGpuSupport (pkgs.btop.overrideAttrs (old: rec {
-          buildInputs = (old.buildInputs or []) ++ [pkgs.rocmPackages.rocm-smi];
-          postFixup = lib.concatStringsSep "\n" [
-            (old.postFixup or "")
-            ''
-              patchelf --add-rpath ${lib.getLib pkgs.rocmPackages.rocm-smi}/lib \
-                $out/bin/btop
-            ''
-          ];
-        }))
-        pkgs.btop;
+        if config.home.btop.amdGpuSupport
+        then
+          pkgs.btop.overrideAttrs (old: rec {
+            buildInputs = (old.buildInputs or []) ++ [pkgs.rocmPackages.rocm-smi];
+            postFixup = lib.concatStringsSep "\n" [
+              (old.postFixup or "")
+              ''
+                patchelf --add-rpath ${lib.getLib pkgs.rocmPackages.rocm-smi}/lib \
+                  $out/bin/btop
+              ''
+            ];
+          })
+        else pkgs.btop;
 
       settings = {
         color_theme = "Dracula";
