@@ -6,21 +6,24 @@
 }: {
   options.home.btop = {
     enable = lib.mkEnableOption "btop configuration";
+    amdGpuSupport = lib.mkEnableOption "enable AMD GPU support (rocm-smi) in btop";
   };
 
   config = lib.mkIf config.home.btop.enable {
     programs.btop = {
       enable = true;
-      package = pkgs.btop.overrideAttrs (old: rec {
-        buildInputs = (old.buildInputs or []) ++ [pkgs.rocmPackages.rocm-smi];
-        postFixup = lib.concatStringsSep "\n" [
-          (old.postFixup or "")
-          ''
-            patchelf --add-rpath ${lib.getLib pkgs.rocmPackages.rocm-smi}/lib \
-              $out/bin/btop
-          ''
-        ];
-      });
+      package =
+        lib.mkIf config.home.btop.amdGpuSupport (pkgs.btop.overrideAttrs (old: rec {
+          buildInputs = (old.buildInputs or []) ++ [pkgs.rocmPackages.rocm-smi];
+          postFixup = lib.concatStringsSep "\n" [
+            (old.postFixup or "")
+            ''
+              patchelf --add-rpath ${lib.getLib pkgs.rocmPackages.rocm-smi}/lib \
+                $out/bin/btop
+            ''
+          ];
+        }))
+        pkgs.btop;
 
       settings = {
         color_theme = "Dracula";

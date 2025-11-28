@@ -4,6 +4,7 @@
   home-manager.users.matthew_hre.home = {
     bat.enable = true;
     btop.enable = true;
+    btop.amdGpuSupport = true;
     direnv.enable = true;
     fastfetch.enable = true;
     fuzzel.enable = true;
