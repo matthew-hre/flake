@@ -8,6 +8,7 @@
       # it's enabled or not, and i don't want it
       # on thwomp
       inputs.niri.homeModules.niri
+      ../../home/wayland
     ];
 
     home = {

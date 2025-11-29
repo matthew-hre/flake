@@ -15,7 +15,6 @@
       ../../home/configs
       ../../home/editors
       ../../home/shell
-      ../../home/wayland
     ];
 
     home = {
