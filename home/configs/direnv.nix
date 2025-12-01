@@ -1,20 +1,25 @@
 {
-  osConfig,
+  config,
   lib,
   ...
-}:
-lib.optionalAttrs osConfig.users.matthew_hre.configs.direnv {
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    config = {
-      global = {
-        disable_stdin = true;
-        hide_env_diff = true;
-        warn_timeout = "0ms";
-      };
-    };
+}: {
+  options.home.direnv = {
+    enable = lib.mkEnableOption "direnv configuration";
   };
 
-  programs.git.ignores = [".direnv/"];
+  config = lib.mkIf config.home.direnv.enable {
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      config = {
+        global = {
+          disable_stdin = true;
+          hide_env_diff = true;
+          warn_timeout = "0ms";
+        };
+      };
+    };
+
+    programs.git.ignores = [".direnv/"];
+  };
 }

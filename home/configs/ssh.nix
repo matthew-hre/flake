@@ -1,14 +1,20 @@
 {
-  osConfig,
+  config,
   lib,
   ...
-}:
-lib.optionalAttrs osConfig.users.matthew_hre.configs.ssh {
-  programs.ssh = {
-    enable = true;
-    extraConfig = "
+}: {
+  options.home.ssh = {
+    enable = lib.mkEnableOption "ssh configuration";
+  };
+
+  config =
+    lib.mkIf config.home.ssh.enable {
+      programs.ssh = {
+        enable = true;
+        extraConfig = "
 Host *
   IdentityAgent ~/.1password/agent.sock
     ";
-  };
+      };
+    };
 }

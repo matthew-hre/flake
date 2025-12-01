@@ -6,56 +6,32 @@
   pkgs,
   inputs,
   ...
-}: let
-  system = ../../system;
-in {
+}: {
   imports = [
     ./hardware-configuration.nix
-    "${system}/core"
-    "${system}/shared"
-    "${system}/hardware/amd.nix"
-    "${system}/hardware/bluetooth.nix"
-    "${system}/network"
-    "${system}/programs/discord.nix"
-    "${system}/programs/fonts.nix"
-    "${system}/programs/libre.nix"
-    "${system}/programs/plasma.nix"
-    "${system}/programs/steam.nix"
-    "${system}/services/boot.nix"
-    "${system}/services/docker.nix"
-    "${system}/services/greetd.nix"
-    "${system}/services/openssh.nix"
-    "${system}/services/openvpn.nix"
-    "${system}/services/pipewire.nix"
+    ../../system
 
     inputs.solaar.nixosModules.default
   ];
 
-  users.matthew_hre = {
-    enable = true;
-    configs = {
-      bat = true;
-      btop = true;
-      direnv = true;
-      fastfetch = true;
-      fuzzel = true;
-      garbage = true;
-      git = true;
-      ssh = true;
-      vicinae = false;
-      helix = true;
-      nvf = true;
+  modules = {
+    hardware.amd.enable = true;
+    hardware.bluetooth.enable = true;
 
-      shell = {
-        enable = true;
-        fish = true;
-        ghostty = true;
-      };
+    programs.discord.enable = true;
+    programs.fonts.enable = true;
+    programs.libre.enable = true;
+    programs.plasma.enable = true;
+    programs.steam.enable = true;
 
-      wayland = {
-        enable = false;
-      };
-    };
+    services.boot.enable = true;
+    services.docker.enable = true;
+    services.greetd.enable = true;
+    services.network.enable = true;
+    services.openssh.enable = true;
+    services.openvpn.enable = true;
+    services.pipewire.enable = true;
+    services.security.enable = true;
   };
 
   networking.hostName = "thwomp";
@@ -74,8 +50,6 @@ in {
       ExecStart = ''/bin/sh -c 'echo XHC2 > /proc/acpi/wakeup' '';
     };
   };
-
-  systemd.services.NetworkManager-wait-online.enable = false;
 
   hardware.enableAllFirmware = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;

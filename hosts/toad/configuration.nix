@@ -1,68 +1,32 @@
-{pkgs, ...}: let
-  system = ../../system;
-in {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
-    "${system}/core"
-    "${system}/shared"
-    "${system}/hardware/bluetooth.nix"
-    "${system}/hardware/fprintd.nix"
-    "${system}/hardware/fwupd.nix"
-    "${system}/network"
-    "${system}/programs/discord.nix"
-    "${system}/programs/fonts.nix"
-    "${system}/programs/libre.nix"
-    "${system}/programs/niri.nix"
-    "${system}/programs/steam.nix"
-    "${system}/programs/xdg.nix"
-    "${system}/services/boot.nix"
-    "${system}/services/docker.nix"
-    "${system}/services/greetd.nix"
-    "${system}/services/openssh.nix"
-    "${system}/services/openvpn.nix"
-    "${system}/services/pipewire.nix"
-    "${system}/services/power.nix"
+    ../../system
   ];
 
-  users.matthew_hre = {
-    enable = true;
-    configs = {
-      bat = true;
-      btop = true;
-      direnv = true;
-      fastfetch = true;
-      fuzzel = true;
-      garbage = true;
-      git = true;
-      ssh = true;
-      vicinae = true;
-      helix = true;
-      nvf = true;
+  modules = {
+    hardware.amd.enable = true;
+    hardware.bluetooth.enable = true;
+    hardware.fprintd.enable = true;
+    hardware.fwupd.enable = true;
 
-      shell = {
-        enable = true;
-        fish = true;
-        ghostty = true;
-      };
+    programs.discord.enable = true;
+    programs.fonts.enable = true;
+    programs.libre.enable = true;
+    programs.niri.enable = true;
+    programs.steam.enable = true;
+    programs.xdg.enable = true;
 
-      wayland = {
-        enable = true;
-        dunst = true;
-        gtk = true;
-        hypridle = true;
-        hyprlock = true;
-        niri = true;
-        waybar = true;
-        wlsunset = true;
-      };
-    };
-  };
-
-  services.hibernation = {
-    enable = true;
-    swapDeviceUUID = "773e93e2-0dd1-48f1-95a8-7f8acb4fb177";
-    lidAction = "suspend-then-hibernate";
-    hibernateDelay = "30m";
+    services.boot.enable = true;
+    services.docker.enable = true;
+    services.greetd.enable = true;
+    services.network.enable = true;
+    services.openssh.enable = true;
+    services.openvpn.enable = true;
+    services.pipewire.enable = true;
+    services.power.enable = true;
+    services.security.enable = true;
+    services.security.fingerprintPam.enable = true;
   };
 
   networking.hostName = "toad";

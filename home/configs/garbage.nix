@@ -1,20 +1,21 @@
 {
-  osConfig,
+  config,
   inputs,
   lib,
   ...
-}:
-lib.optionalAttrs osConfig.users.matthew_hre.configs.garbage {
+}: {
   imports = [
     inputs.dustpan.homeManagerModules.dustpan
   ];
 
-  config = {
-    nix = {
-      gc = {
-        automatic = true;
-        dates = "monthly";
-      };
+  options.home.garbage = {
+    enable = lib.mkEnableOption "garbage configuration";
+  };
+
+  config = lib.mkIf config.home.garbage.enable {
+    nix.gc = {
+      automatic = true;
+      dates = "monthly";
     };
 
     services.dustpan = {

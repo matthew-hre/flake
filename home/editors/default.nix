@@ -2,5 +2,6 @@
   imports = [
     ./helix
     ./nvf
+    ./vscode
   ];
 }

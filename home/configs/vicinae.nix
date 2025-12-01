@@ -1,19 +1,24 @@
 {
-  osConfig,
+  config,
   inputs,
   lib,
   ...
-}:
-lib.optionalAttrs osConfig.users.matthew_hre.configs.vicinae {
+}: {
   imports = [
     inputs.vicinae.homeManagerModules.default
   ];
 
-  services.vicinae = {
-    enable = true;
-    settings = {
-      popToRootOnClose = true;
-      theme.name = "dracula";
+  options.home.vicinae = {
+    enable = lib.mkEnableOption "vicinae configuration";
+  };
+
+  config = lib.mkIf config.home.vicinae.enable {
+    services.vicinae = {
+      enable = true;
+      settings = {
+        popToRootOnClose = true;
+        theme.name = "dracula";
+      };
     };
   };
 }

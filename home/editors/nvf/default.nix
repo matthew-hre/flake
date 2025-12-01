@@ -1,17 +1,20 @@
 {
-  osConfig,
+  config,
   inputs,
   lib,
   ...
-}:
-lib.optionalAttrs osConfig.users.matthew_hre.configs.nvf {
+}: {
   imports = [
     inputs.nvf.homeManagerModules.default
 
     ./languages.nix
   ];
 
-  config = {
+  options.home.editors.nvf = {
+    enable = lib.mkEnableOption "nvf (neovim) configuration";
+  };
+
+  config = lib.mkIf config.home.editors.nvf.enable {
     programs.nvf = {
       enable = true;
 
@@ -26,7 +29,7 @@ lib.optionalAttrs osConfig.users.matthew_hre.configs.nvf {
         };
         preventJunkFiles = true;
 
-        clipboard.providers.wl-copy.enable = true;
+        clipboard.enable = true;
 
         keymaps = [
           {

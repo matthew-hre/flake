@@ -14,8 +14,8 @@ This is my NixOS configuration for both my desktop and laptop.
 |-------------------|----------------------|-------------------------------|
 | **DE / WM**       | KDE Plasma 6         | Niri                          |
 | **Notifications** |                      | Dunst                         |
-| **Bar**           |                      | Waybar                        |
-| **Launcher**      | Fuzzel               | Fuzzel                        |
+| **Bar**           |                      | Custom Quickshell             |
+| **Launcher**      | Fuzzel               | Vicinae                       |
 | **Shell**         | fish + Pure Prompt   | fish + Pure Prompt            |
 | **Editor**        | VSCode + NVF         | VSCode + NVF                  |
 | **Terminal**      | Ghostty              | Ghostty                       |

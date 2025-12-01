@@ -25,55 +25,37 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nvf.url = "github:notashelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     solaar = {
       url = "github:Svenum/Solaar-Flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stash.url = "github:NotAShelf/stash";
+
     vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = inputs @ {
-    ghostty,
-    home-manager,
     nixpkgs,
     self,
     ...
   }: let
     system = "x86_64-linux";
-
-    mkHost = hostname: modules:
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-
-        specialArgs = {inherit inputs hostname;};
-
-        modules =
-          modules
-          ++ [
-            home-manager.nixosModules.home-manager
-            ./home
-            {
-              environment.systemPackages = [
-                ghostty.packages.${system}.default
-              ];
-
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {inherit inputs hostname;};
-              };
-            }
-          ];
-      };
+    lib = import ./lib {inherit inputs nixpkgs;};
   in {
     nixosConfigurations = {
-      toad = mkHost "toad" [
+      toad = lib.mkHost "toad" [
         ./hosts/toad/configuration.nix
         {nixpkgs.overlays = [inputs.niri.overlays.niri];}
       ];
-      thwomp = mkHost "thwomp" [./hosts/thwomp/configuration.nix];
+      thwomp = lib.mkHost "thwomp" [./hosts/thwomp/configuration.nix];
     };
 
     checks.${system} = {
