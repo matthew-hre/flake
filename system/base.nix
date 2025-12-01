@@ -11,10 +11,10 @@
     vim
 
     (pkgs.writeShellScriptBin "rebuild" ''
-      sudo nixos-rebuild switch --flake ~/nix-config#$HOSTNAME 2>&1 | nom
+      nh os switch ~/nix-config -H $HOSTNAME
     '')
     (pkgs.writeShellScriptBin "rebuild-test" ''
-      sudo nixos-rebuild test --flake ~/nix-config#$HOSTNAME 2>&1 | nom
+      nh os test ~/nix-config -H $HOSTNAME
     '')
   ];
 

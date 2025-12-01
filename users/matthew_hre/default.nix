@@ -36,6 +36,7 @@
         lazydocker
         alejandra
         nix-output-monitor
+        nh
         glow
         strace
         ltrace
