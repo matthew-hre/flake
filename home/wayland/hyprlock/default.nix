@@ -1,69 +1,59 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   time = import ./time.nix {inherit pkgs;};
 in {
-  options.home.wayland.hyprlock = {
-    enable = lib.mkEnableOption "hyprlock configuration";
-  };
+  programs.hyprlock = {
+    enable = true;
 
-  config = lib.mkIf config.home.wayland.hyprlock.enable {
-    programs.hyprlock = {
-      enable = true;
-
-      settings = {
-        general = {
-          disable_loading_bar = true;
-          immediate_render = true;
-          hide_cursor = true;
-          no_fade_in = true;
-        };
-
-        auth = {
-          "fingerprint:enabled" = true;
-        };
-
-        background = [
-          {
-            monitor = "";
-            path = "color(0x131313)";
-          }
-        ];
-
-        input-field = [
-          {
-            monitor = "eDP-1";
-            size = "0, 0";
-            opacity = 0;
-          }
-        ];
-
-        label = [
-          {
-            monitor = "";
-            text = ''
-              cmd[update:10] ${time}/bin/lock-time
-            '';
-            font_size = 60;
-            font_family = "Departure Mono";
-
-            color = "rgba(200, 205, 210, 1)";
-
-            position = "0%, 0%";
-
-            valign = "center";
-            halign = "center";
-
-            shadow_color = "rgba(100, 200, 220, 0.3)";
-            shadow_size = 12;
-            shadow_passes = 3;
-            shadow_boost = 0.4;
-          }
-        ];
+    settings = {
+      general = {
+        disable_loading_bar = true;
+        immediate_render = true;
+        hide_cursor = true;
+        no_fade_in = true;
       };
+
+      auth = {
+        "fingerprint:enabled" = true;
+      };
+
+      background = [
+        {
+          monitor = "";
+          path = "color(0x131313)";
+        }
+      ];
+
+      input-field = [
+        {
+          monitor = "eDP-1";
+
+          size = "0, 0";
+          opacity = 0;
+        }
+      ];
+
+      label = [
+        {
+          monitor = "";
+          text = ''
+            cmd[update:10] ${time}/bin/lock-time
+          '';
+          font_size = 60;
+          font_family = "Departure Mono";
+
+          color = "rgba(200, 205, 210, 1)";
+
+          position = "0%, 0%";
+
+          valign = "center";
+          halign = "center";
+
+          shadow_color = "rgba(100, 200, 220, 0.3)";
+          shadow_size = 12;
+          shadow_passes = 3;
+          shadow_boost = 0.4;
+        }
+      ];
     };
   };
 }

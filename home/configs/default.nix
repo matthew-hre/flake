@@ -8,6 +8,5 @@
     ./garbage.nix
     ./git.nix
     ./ssh.nix
-    ./vicinae.nix
   ];
 }

@@ -1,51 +1,41 @@
 {
-  config,
-  lib,
-  ...
-}: {
-  options.home.git = {
-    enable = lib.mkEnableOption "git configuration";
-  };
+  programs.git = {
+    enable = true;
 
-  config = lib.mkIf config.home.git.enable {
-    programs.git = {
-      enable = true;
+    settings = {
+      user = {
+        name = "Matthew Hrehirchuk";
+        email = "matthew_hre@outlook.com";
+      };
 
-      settings = {
-        user = {
-          name = "Matthew Hrehirchuk";
-          email = "matthew_hre@outlook.com";
-        };
+      include = {
+        path = "/home/matthew_hre/.config/git/themes.gitconfig";
+      };
 
-        include = {
-          path = "/home/matthew_hre/.config/git/themes.gitconfig";
-        };
-
-        core = {pager = "bat";};
-        blame = {pager = "bat";};
-        delta = {
-          features = "line-numbers decorations";
-          hyperlinks = true;
-          syntax-theme = "Dracula";
-          plus-style = ''syntax "#003800"'';
-          minus-style = ''syntax "#3f0001"'';
-        };
-        url."git@github.com" = {
-          insteadOf = "gh";
-        };
-        url."git@github.com:matthew-hre/" = {
-          insteadOf = "mh:";
-        };
+      core = {pager = "bat";};
+      blame = {pager = "bat";};
+      delta = {
+        features = "line-numbers decorations";
+        hyperlinks = true;
+        syntax-theme = "Dracula";
+        plus-style = ''syntax "#003800"'';
+        minus-style = ''syntax "#3f0001"'';
+      };
+      url."git@github.com" = {
+        insteadOf = "gh";
+      };
+      url."git@github.com:matthew-hre/" = {
+        insteadOf = "mh:";
       };
     };
+  };
 
-    programs.jujutsu = {
-      enable = true;
-      settings = {
-        user = {
-          name = "Matthew Hrehirchuk";
-          email = "matthew_hre@outlook.com";
-        };
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Matthew Hrehirchuk";
+        email = "matthew_hre@outlook.com";
       };
     };
   };
