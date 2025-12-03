@@ -1,8 +1,11 @@
 {
   config,
   lib,
+  pkgs,
   ...
-}: {
+}: let
+  time = import ./time.nix {inherit pkgs;};
+in {
   options.home.wayland.hyprlock = {
     enable = lib.mkEnableOption "hyprlock configuration";
   };
@@ -15,7 +18,7 @@
         general = {
           disable_loading_bar = true;
           immediate_render = true;
-          hide_cursor = false;
+          hide_cursor = true;
           no_fade_in = true;
         };
 
@@ -26,40 +29,15 @@
         background = [
           {
             monitor = "";
-            path = "~/Pictures/outer-wilds-4k.png";
-            blur_passes = 2;
-            blur_size = 7;
-            noise = 1.17e-2; # what the fuck???
+            path = "color(0x131313)";
           }
         ];
 
         input-field = [
           {
             monitor = "eDP-1";
-
-            size = "300, 50";
-            valign = "bottom";
-            position = "0%, 10%";
-
-            outline_thickness = 1;
-
-            font_color = "rgb(248, 248, 242)";
-
-            outer_color = "rgba(139, 233, 253, 0.5)";
-            inner_color = "rgba(80, 250, 123, 0.1)";
-            check_color = "rgba(241, 250, 140, 0.5)";
-            fail_color = "rgba(255, 85, 85, 0.5)";
-
-            fade_on_empty = false;
-            placeholder_text = "Enter Password";
-
-            dots_spacing = 0.2;
-            dots_center = true;
-            dots_fade_time = 100;
-
-            shadow_color = "rgba(0, 0, 0, 0.1)";
-            shadow_size = 7;
-            shadow_passes = 2;
+            size = "0, 0";
+            opacity = 0;
           }
         ];
 
@@ -67,22 +45,22 @@
           {
             monitor = "";
             text = ''
-              cmd[update:1000] echo "<span>$(date +'%H:%M:%S')</span>"
+              cmd[update:10] ${time}/bin/lock-time
             '';
             font_size = 60;
-            font_family = "FiraCode Nerd Font";
+            font_family = "Departure Mono";
 
-            color = "rgb(248, 248, 242)";
+            color = "rgba(200, 205, 210, 1)";
 
-            position = "0%, -30%";
+            position = "0%, 0%";
 
             valign = "center";
             halign = "center";
 
-            shadow_color = "rgba(0, 0, 0, 0.1)";
-            shadow_size = 20;
-            shadow_passes = 2;
-            shadow_boost = 0.3;
+            shadow_color = "rgba(100, 200, 220, 0.3)";
+            shadow_size = 12;
+            shadow_passes = 3;
+            shadow_boost = 0.4;
           }
         ];
       };
