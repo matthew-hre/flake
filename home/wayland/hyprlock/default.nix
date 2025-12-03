@@ -29,7 +29,7 @@ in {
         background = [
           {
             monitor = "";
-            path = "color(0x000000)";
+            path = "color(0x131313)";
           }
         ];
 
@@ -50,7 +50,7 @@ in {
             font_size = 60;
             font_family = "Departure Mono";
 
-            color = "rgb(240, 245, 250)";
+            color = "rgba(200, 205, 210, 1)";
 
             position = "0%, 0%";
 
@@ -59,7 +59,7 @@ in {
 
             shadow_color = "rgba(100, 200, 220, 0.3)";
             shadow_size = 12;
-            shadow_passes = 2;
+            shadow_passes = 3;
             shadow_boost = 0.4;
           }
         ];
