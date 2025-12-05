@@ -1,12 +1,14 @@
-{
+let
+  user = {
+    name = "Matthew Hrehirchuk";
+    email = "matthew_hre@outlook.com";
+  };
+in {
   programs.git = {
     enable = true;
 
     settings = {
-      user = {
-        name = "Matthew Hrehirchuk";
-        email = "matthew_hre@outlook.com";
-      };
+      inherit user;
 
       include = {
         path = "/home/matthew_hre/.config/git/themes.gitconfig";
@@ -33,9 +35,14 @@
   programs.jujutsu = {
     enable = true;
     settings = {
-      user = {
-        name = "Matthew Hrehirchuk";
-        email = "matthew_hre@outlook.com";
+      inherit user;
+
+      aliases = {
+        init = ["git" "init" "--colocate"];
+      };
+
+      ui = {
+        editor = "nvim";
       };
     };
   };
