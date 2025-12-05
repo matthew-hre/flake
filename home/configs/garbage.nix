@@ -1,29 +1,17 @@
-{
-  config,
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.dustpan.homeManagerModules.dustpan
   ];
-
-  options.home.garbage = {
-    enable = lib.mkEnableOption "garbage configuration";
+  nix.gc = {
+    automatic = true;
+    dates = "monthly";
   };
 
-  config = lib.mkIf config.home.garbage.enable {
-    nix.gc = {
-      automatic = true;
-      dates = "monthly";
-    };
-
-    services.dustpan = {
-      enable = true;
-      roots = ["$HOME/Projects"];
-      targets = ["node_modules" ".next" ".zig-cache"];
-      olderThanDays = 14;
-      frequency = "weekly";
-    };
+  services.dustpan = {
+    enable = true;
+    roots = ["$HOME/Projects"];
+    targets = ["node_modules" ".next" ".zig-cache"];
+    olderThanDays = 14;
+    frequency = "weekly";
   };
 }

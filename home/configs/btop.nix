@@ -4,16 +4,15 @@
   lib,
   ...
 }: {
-  options.home.btop = {
-    enable = lib.mkEnableOption "btop configuration";
+  options.btop = {
     amdGpuSupport = lib.mkEnableOption "enable AMD GPU support (rocm-smi) in btop";
   };
 
-  config = lib.mkIf config.home.btop.enable {
+  config = {
     programs.btop = {
       enable = true;
       package =
-        if config.home.btop.amdGpuSupport
+        if config.btop.amdGpuSupport
         then
           pkgs.btop.overrideAttrs (old: rec {
             buildInputs = (old.buildInputs or []) ++ [pkgs.rocmPackages.rocm-smi];
