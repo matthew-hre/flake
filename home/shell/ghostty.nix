@@ -23,7 +23,7 @@ in {
 
       window-inherit-working-directory = true;
       theme = "Dracula";
-      background = "#0c0c0c";
+      # background = "#1a1b23";
       window-decoration = true;
       window-theme = "ghostty";
       window-padding-x = 16;
