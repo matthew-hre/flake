@@ -7,6 +7,8 @@
     git-hooks.url = "github:cachix/git-hooks.nix";
     git-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
+    helium.url = "github:FKouhai/helium2nix/main";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 

@@ -1,10 +1,14 @@
 {
+  inputs,
   lib,
   pkgs,
   ...
 }: {
   environment.systemPackages = with pkgs; [
     git
+
+    inputs.helium.defaultPackage.x86_64-linux
+
     libnotify
     nomacs
     obsidian
