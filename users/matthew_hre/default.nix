@@ -51,7 +51,7 @@
         SDL_VIDEODRIVER = "wayland";
         XDG_SESSION_TYPE = "wayland";
         EDITOR = "nvim";
-        BROWSER = "firefox";
+        BROWSER = "helium";
         TERMINAL = "ghostty";
         DELTA_PAGER = "less -R";
         MANPAGER = "sh -c 'col -bx | bat -l man -p'";

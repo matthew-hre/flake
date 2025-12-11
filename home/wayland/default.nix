@@ -1,10 +1,4 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./dunst
     ./gtk
@@ -35,4 +29,16 @@
 
     nmgui
   ];
+
+  xdg = {
+    mime.enable = true;
+
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "x-scheme-handler/http" = "helium.desktop";
+        "x-scheme-handler/https" = "helium.desktop";
+      };
+    };
+  };
 }
