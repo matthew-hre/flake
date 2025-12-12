@@ -50,6 +50,12 @@ in {
 
       prefer-no-csd = true;
 
+      outputs."eDP-1".mode = {
+        width = 2880;
+        height = 1920;
+        refresh = 60.001;
+      };
+
       layout = {
         gaps = 8;
         center-focused-column = "never";
