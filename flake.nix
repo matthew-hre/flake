@@ -51,6 +51,7 @@
   }: let
     system = "x86_64-linux";
     lib = import ./lib {inherit inputs nixpkgs;};
+    pkgs = nixpkgs.legacyPackages.${system};
   in {
     nixosConfigurations = {
       toad = lib.mkHost "toad" [
@@ -69,14 +70,11 @@
       };
     };
 
-    devShells.${system}.default = let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      pkgs.mkShell {
-        inherit (self.checks.${system}.pre-commit-check) shellHook;
-        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
-      };
+    devShells.${system}.default = pkgs.mkShell {
+      inherit (self.checks.${system}.pre-commit-check) shellHook;
+      buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+    };
 
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+    formatter.${system} = pkgs.alejandra;
   };
 }

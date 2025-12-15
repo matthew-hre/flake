@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  ghostty = inputs.ghostty.packages.${pkgs.system}.default;
+  ghostty = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.sessionVariables = {
     GHOSTTY_RESOURCES_DIR = "${ghostty}/share/ghostty";

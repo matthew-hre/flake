@@ -4,7 +4,7 @@
   ...
 }: {
   home.packages = [
-    inputs.quickshell.packages.${pkgs.system}.default
+    inputs.quickshell.packages.${pkgs.stdenv.hostPlatform.system}.default
     pkgs.qt6Packages.qt5compat
     pkgs.libsForQt5.qt5.qtgraphicaleffects
     pkgs.kdePackages.qtbase

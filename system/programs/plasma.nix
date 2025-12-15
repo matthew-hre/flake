@@ -15,7 +15,7 @@
     ];
 
     environment.systemPackages = with pkgs; [
-      inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+      inputs.kwin-effects-forceblur.packages.${pkgs.stdenv.hostPlatform.system}.default
       kdePackages.kconfig
     ];
   };
