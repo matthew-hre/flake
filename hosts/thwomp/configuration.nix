@@ -29,7 +29,7 @@
     services.greetd.enable = true;
     services.network.enable = true;
     services.openssh.enable = true;
-    services.openvpn.enable = true;
+    services.vpn.enable = true;
     services.pipewire.enable = true;
     services.security.enable = true;
   };

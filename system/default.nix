@@ -17,7 +17,7 @@
     ./services/greetd.nix
     ./services/network.nix
     ./services/openssh.nix
-    ./services/openvpn.nix
+    ./services/vpn.nix
     ./services/pipewire.nix
     ./services/power.nix
     ./services/security.nix
