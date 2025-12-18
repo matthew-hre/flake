@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -19,7 +20,7 @@
           ;;
       esac
     '';
-    workspaceBindings = lib.listToAttrs (concatMap (i: [
+    workspaceBindings = lib.listToAttrs (builtins.concatMap (i: [
       {
         name = "Mod+${toString i}";
         value.action = focus-workspace i;
