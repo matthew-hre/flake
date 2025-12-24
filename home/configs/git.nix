@@ -1,7 +1,7 @@
 let
   user = {
     name = "Matthew Hrehirchuk";
-    email = "matthew_hre@outlook.com";
+    email = "me@matthew-hre.com";
   };
 in {
   programs.git = {
