@@ -78,6 +78,21 @@
 
   hardware.logitech.wireless.enable = true;
 
+  hardware.bluetooth = {
+    settings.General = {
+      experimental = true;
+
+      Privacy = "device";
+      JustWorksRepairing = "true";
+      Class = "0x000100";
+      FastConnectable = "true";
+    };
+  };
+
+  hardware.xpadneo.enable = true;
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [xpadneo];
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
