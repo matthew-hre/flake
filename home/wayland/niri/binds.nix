@@ -41,7 +41,7 @@
       "Mod+C".action = center-column;
 
       "Mod+V".action.spawn = ["vicinae" "vicinae://extensions/vicinae/clipboard/history"];
-      "Mod+Period".action.spawn = ["vicinae" "vicinae://extensions/vicinae/vicinae/search-emojis"];
+      "Mod+Period".action.spawn = ["vicinae" "vicinae://extensions/vicinae/core/search-emojis"];
 
       "Mod+L".action.spawn = ["hyprlock"];
 

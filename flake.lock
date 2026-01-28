@@ -653,16 +653,17 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1769191841,
-        "narHash": "sha256-AJBhxUMQGoIG4SlofE0SHrYgvAy7/lUGRVXFO7ViaTs=",
+        "lastModified": 1766411953,
+        "narHash": "sha256-31YPrVinpkVuOehSxQ7KFSViAVC+BUpYx41tmPgssEM=",
         "owner": "NotAShelf",
         "repo": "stash",
-        "rev": "ded38723d4fc65f426114804ebf75cbf3b6a3386",
+        "rev": "f6818c9e6f2e4da4f8e7966ba4a96a317e1ad530",
         "type": "github"
       },
       "original": {
         "owner": "NotAShelf",
         "repo": "stash",
+        "rev": "f6818c9e6f2e4da4f8e7966ba4a96a317e1ad530",
         "type": "github"
       }
     },

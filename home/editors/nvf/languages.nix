@@ -46,7 +46,7 @@
       dap.enable = true;
       lsp = {
         enable = true;
-        server = "pyright";
+        servers = ["pyright"];
       };
       treesitter.enable = true;
     };
@@ -60,7 +60,7 @@
       enable = true;
       extensions.ts-error-translator.enable = true;
       extraDiagnostics.enable = true;
-      format.type = "prettierd";
+      format.type = ["prettierd"];
       lsp.enable = true;
       treesitter.enable = true;
     };

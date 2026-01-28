@@ -39,7 +39,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stash.url = "github:NotAShelf/stash";
+    stash.url = "github:NotAShelf/stash/f6818c9e6f2e4da4f8e7966ba4a96a317e1ad530";
 
     vicinae.url = "github:vicinaehq/vicinae";
   };
