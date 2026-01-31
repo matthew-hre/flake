@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  time = import ./time.nix {inherit pkgs;};
-in {
+{...}: {
   programs.hyprlock = {
     enable = true;
 
@@ -19,7 +17,9 @@ in {
       background = [
         {
           monitor = "";
-          path = "color(0x131313)";
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
         }
       ];
 
@@ -35,23 +35,21 @@ in {
       label = [
         {
           monitor = "";
-          text = ''
-            cmd[update:10] ${time}/bin/lock-time
-          '';
-          font_size = 60;
-          font_family = "Departure Mono";
+          text = "cmd[update:1000] date +'%H:%M:%S'";
+          font_size = 96;
+          font_family = "Work Sans Light";
 
           color = "rgba(200, 205, 210, 1)";
 
-          position = "0%, 0%";
+          position = "0, 100";
 
           valign = "center";
           halign = "center";
 
-          shadow_color = "rgba(100, 200, 220, 0.3)";
-          shadow_size = 12;
-          shadow_passes = 3;
-          shadow_boost = 0.4;
+          shadow_color = "rgba(0, 0, 0, 0.5)";
+          shadow_size = 8;
+          shadow_passes = 2;
+          shadow_boost = 0.3;
         }
       ];
     };
