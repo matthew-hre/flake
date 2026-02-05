@@ -7,7 +7,7 @@ This is my NixOS configuration for both my desktop and laptop.
 
 > This config is a **nightmare**. I would not wish this upon my worst enemies.
 > Please, for the love of god, do not use this as a template for your own NixOS
-> configuration. This is directed to the 8 people who have this repo starred.
+> configuration. This is directed to the 9 people who have this repo starred.
 
 ## Overview
 
