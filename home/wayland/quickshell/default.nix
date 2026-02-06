@@ -14,7 +14,7 @@
     pkgs.material-symbols
     pkgs.material-icons
     pkgs.cava
-    pkgs.gpu-screen-recorder
+    pkgs.slurp
   ];
 
   home.sessionVariables = {

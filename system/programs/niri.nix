@@ -24,6 +24,9 @@
         package = pkgs.niri;
       };
 
+      # install here to handle security permissions properly
+      programs.gpu-screen-recorder.enable = true;
+
       # shoutout @CodedNil on gh for the fix
       # waiting on https://github.com/YaLTeR/niri/pull/1923 for a real fix
       services.keyd = {
