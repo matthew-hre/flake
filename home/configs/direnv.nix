@@ -6,6 +6,7 @@
       global = {
         disable_stdin = true;
         hide_env_diff = true;
+        log_filter = "loading .*\\.envrc$";
         warn_timeout = "0ms";
       };
     };

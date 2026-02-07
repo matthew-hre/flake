@@ -4,6 +4,19 @@
     interactiveShellInit = ''
       set fish_greeting
 
+      set -g __prompt_needs_spacer 0
+
+      function __prompt_set_spacer --on-event fish_preexec
+          set -g __prompt_needs_spacer 1
+      end
+
+      function __prompt_print_spacer --on-event fish_prompt
+          if test "$__prompt_needs_spacer" -eq 1
+              echo
+          end
+          set -g __prompt_needs_spacer 0
+      end
+
       # https://github.com/NixOS/nixpkgs/issues/462025
       set -p fish_complete_path ${pkgs.fish}/share/fish/completions
 
