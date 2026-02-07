@@ -16,7 +16,7 @@ in {
 
     settings = {
       confirm-close-surface = false;
-      font-family = "FiraCode Nerd Font";
+      font-family = "Iosevka Extended";
       font-size = 11;
       font-style = "Medium";
       gtk-wide-tabs = false;

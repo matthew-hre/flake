@@ -20,7 +20,6 @@
           display-inlay-hints = true;
         };
         auto-pairs = true;
-        clipboard-provider = "wayland";
       };
     };
   };
