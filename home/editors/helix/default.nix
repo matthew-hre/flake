@@ -1,4 +1,6 @@
 {
+  imports = [./languages.nix];
+
   programs.helix = {
     enable = true;
     settings = {
