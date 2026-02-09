@@ -9,6 +9,10 @@
 
     helium.url = "github:FKouhai/helium2nix/main";
 
+    ink.url = "github:theMackabu/ink";
+
+    llm-agents.url = "github:numtide/llm-agents.nix";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 

@@ -9,6 +9,8 @@
 
     inputs.helium.defaultPackage.x86_64-linux
 
+    inputs.ink.packages.${pkgs.system}.default
+
     libnotify
     nomacs
     obsidian

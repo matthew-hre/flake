@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{inputs, pkgs, ...}: {
   # System-level user definition
   users.users.matthew_hre = {
     isNormalUser = true;
@@ -44,6 +44,7 @@
         usbutils
         xclip
         wireshark
+        inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.amp
       ];
 
       sessionVariables = {
