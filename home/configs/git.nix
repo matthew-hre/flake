@@ -42,7 +42,7 @@ in {
       };
 
       ui = {
-        editor = "nvim";
+        editor = "hx";
       };
     };
   };

@@ -9,7 +9,7 @@
 
     inputs.helium.defaultPackage.x86_64-linux
 
-    inputs.ink.packages.${pkgs.system}.default
+    inputs.ink.packages.x86_64-linux.default
 
     libnotify
     nomacs

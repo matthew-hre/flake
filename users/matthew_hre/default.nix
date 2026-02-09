@@ -1,4 +1,8 @@
-{inputs, pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   # System-level user definition
   users.users.matthew_hre = {
     isNormalUser = true;
@@ -37,7 +41,6 @@
         alejandra
         nix-output-monitor
         nh
-        glow
         strace
         ltrace
         pciutils
@@ -51,7 +54,7 @@
         QT_QPA_PLATFORM = "wayland";
         SDL_VIDEODRIVER = "wayland";
         XDG_SESSION_TYPE = "wayland";
-        EDITOR = "nvim";
+        EDITOR = "hx";
         BROWSER = "helium";
         TERMINAL = "ghostty";
         DELTA_PAGER = "less -R";
