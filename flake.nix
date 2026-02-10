@@ -2,19 +2,35 @@
   description = "NixOS configuration";
 
   inputs = {
-    dustpan.url = "github:matthew-hre/dustpan";
+    dustpan = {
+      url = "github:matthew-hre/dustpan";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    git-hooks.url = "github:cachix/git-hooks.nix";
-    git-hooks.inputs.nixpkgs.follows = "nixpkgs";
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    helium.url = "github:FKouhai/helium2nix/main";
+    helium = {
+      url = "github:FKouhai/helium2nix/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    ink.url = "github:theMackabu/ink";
+    ink = {
+      url = "github:theMackabu/ink";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    llm-agents.url = "github:numtide/llm-agents.nix";
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     kwin-effects-forceblur = {
       url = "github:taj-ny/kwin-effects-forceblur";
@@ -26,12 +42,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri.url = "github:sodiboo/niri-flake";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nvf.url = "github:notashelf/nvf";
-    nvf.inputs.nixpkgs.follows = "nixpkgs";
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
@@ -43,9 +64,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stash.url = "github:NotAShelf/stash/f6818c9e6f2e4da4f8e7966ba4a96a317e1ad530";
+    stash = {
+      url = "github:NotAShelf/stash/f6818c9e6f2e4da4f8e7966ba4a96a317e1ad530";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    vicinae.url = "github:vicinaehq/vicinae";
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zed = {
+      url = "github:zed-industries/zed";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {

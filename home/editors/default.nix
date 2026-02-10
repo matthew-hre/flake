@@ -1,7 +1,8 @@
 {
   imports = [
     ./helix
-    ./nvf
+    # ./nvf
     ./vscode
+    ./zed
   ];
 }

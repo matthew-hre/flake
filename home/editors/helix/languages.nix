@@ -16,7 +16,7 @@
       pyright
 
       # zig / go / rust
-      zls
+      # zls
       gopls
       rust-analyzer
 

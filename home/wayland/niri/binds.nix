@@ -5,7 +5,6 @@
   ...
 }: {
   programs.niri.settings.binds = with config.lib.niri.actions; let
-    sh = spawn "sh" "-c";
     powerMenu = pkgs.writeShellScript "power-menu" ''
       choice=$(echo -e " Lock\n Reboot\n⏻ Shutdown" | fuzzel --dmenu -l 7 -p "󰚥 ")
       case "$choice" in
@@ -50,6 +49,7 @@
       "Mod+Q".action = close-window;
       "Mod+F".action = maximize-column;
       "Mod+Shift+F".action = fullscreen-window;
+      "Mod+Shift+Ctrl+F".action = toggle-windowed-fullscreen;
       "Mod+G".action = toggle-window-floating;
       "Mod+C".action = center-column;
 
