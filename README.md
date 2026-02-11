@@ -1,7 +1,6 @@
+# My NixOS Configuration
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 [![Niri](https://img.shields.io/static/v1?label=NIRI&message=latest&style=flat&logo=hyprland&colorA=24273A&colorB=8AADF4&logoColor=CAD3F5)](https://github.com/YaLTeR/niri)
-
-# My NixOS Configuration
 
 ![screenshot](assets/screenshot.png)
 
