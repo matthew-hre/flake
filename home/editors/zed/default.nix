@@ -21,6 +21,8 @@
       cp ${inputs.zed.packages.x86_64-linux.default}/share/applications/*.desktop $out/share/applications/
     '';
   };
+
+  eslintFormatter = [{code_action = "source.fixAll.eslint";}];
 in {
   config = {
     home.packages = [] ++ extensionDependencies;
@@ -55,9 +57,15 @@ in {
 
         format_on_save = "on";
 
-        languages."Nix".formatter.external = {
-          command = "alejandra";
-          arguments = ["--quiet" "--"];
+        languages = {
+          "Nix".formatter.external = {
+            command = "alejandra";
+            arguments = ["--quiet" "--"];
+          };
+          JavaScript.formatter = eslintFormatter;
+          TypeScript.formatter = eslintFormatter;
+          TSX.formatter = eslintFormatter;
+          JSX.formatter = eslintFormatter;
         };
 
         tab_size = 2;

@@ -110,6 +110,8 @@
       ".." = "cd ..";
       ":q" = "exit";
       find = "fd";
+      nvim = "hx";
+      code = "zed";
     };
     plugins = [
       {
