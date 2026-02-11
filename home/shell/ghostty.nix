@@ -16,9 +16,8 @@ in {
 
     settings = {
       confirm-close-surface = false;
-      font-family = "Iosevka Extended";
+      font-family = "Lilex Nerd Font";
       font-size = 11;
-      font-style = "Medium";
       gtk-wide-tabs = false;
 
       window-inherit-working-directory = true;

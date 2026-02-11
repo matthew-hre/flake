@@ -8,7 +8,7 @@
         line-height = 30;
         icon-theme = "Papirus";
         prompt = ''"  "'';
-        font = "FiraCode Nerd Font:size=14";
+        font = "Lilex Nerd Font:size=14";
       };
       colors = {
         background = "282A36FF";

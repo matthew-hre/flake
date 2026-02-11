@@ -37,7 +37,7 @@
           monitor = "";
           text = "cmd[update:1000] date +'%H:%M:%S'";
           font_size = 96;
-          font_family = "Work Sans Light";
+          font_family = "IBM Plex Sans Light";
 
           color = "rgba(200, 205, 210, 1)";
 

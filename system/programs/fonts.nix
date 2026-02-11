@@ -10,8 +10,8 @@
     fonts.packages = with pkgs; [
       departure-mono
       work-sans
-      nerd-fonts.fira-code
-      nerd-fonts.iosevka
+      ibm-plex
+      nerd-fonts.lilex
     ];
   };
 }

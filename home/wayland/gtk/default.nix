@@ -16,7 +16,7 @@
     "org/gnome/desktop/interface" = {
       font-name = "Work Sans 10";
       document-font-name = "Work Sans 10";
-      monospace-font-name = "Fira Code Nerd Font 10";
+      monospace-font-name = "Lilex Nerd Font 10";
     };
   };
 }
