@@ -59,6 +59,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    quickshell-config = {
+      url = "github:matthew-hre/quickshell-config";
+    };
+
     solaar = {
       url = "github:Svenum/Solaar-Flake/main";
       inputs.nixpkgs.follows = "nixpkgs";

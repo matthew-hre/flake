@@ -624,6 +624,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1770562336,
+        "narHash": "sha256-ub1gpAONMFsT/GU2hV6ZWJjur8rJ6kKxdm9IlCT0j84=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d6c71932130818840fc8fe9509cf50be8c64634f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nvf": {
       "inputs": {
         "flake-compat": "flake-compat_4",
@@ -669,6 +685,46 @@
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       }
     },
+    "quickshell-config": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3",
+        "quickshell": "quickshell_2"
+      },
+      "locked": {
+        "lastModified": 1770841536,
+        "narHash": "sha256-Oqou8dUzRgWni07ZskPYdGt4nVmd1Oor8gGLPQqBlDA=",
+        "owner": "matthew-hre",
+        "repo": "quickshell-config",
+        "rev": "01d85779a1e03d46218a3cc207a69d21b4e3889e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "matthew-hre",
+        "repo": "quickshell-config",
+        "type": "github"
+      }
+    },
+    "quickshell_2": {
+      "inputs": {
+        "nixpkgs": [
+          "quickshell-config",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770693276,
+        "narHash": "sha256-ngXnN5YXu+f45+QGYNN/VEBMQmcBCYGRCqwaK8cxY1s=",
+        "ref": "refs/heads/master",
+        "rev": "dacfa9de829ac7cb173825f593236bf2c21f637e",
+        "revCount": 735,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      }
+    },
     "root": {
       "inputs": {
         "dustpan": "dustpan",
@@ -683,6 +739,7 @@
         "nixpkgs": "nixpkgs_2",
         "nvf": "nvf",
         "quickshell": "quickshell",
+        "quickshell-config": "quickshell-config",
         "solaar": "solaar",
         "stash": "stash",
         "vicinae": "vicinae",
