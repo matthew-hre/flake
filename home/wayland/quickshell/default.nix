@@ -9,6 +9,7 @@
     pkgs.libsForQt5.qt5.qtgraphicaleffects
     pkgs.kdePackages.qtbase
     pkgs.kdePackages.qtdeclarative
+    pkgs.kdePackages.qtsvg
     pkgs.kdePackages.qtstyleplugin-kvantum
     pkgs.wallust
     pkgs.material-symbols

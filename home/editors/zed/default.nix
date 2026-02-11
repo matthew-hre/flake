@@ -108,6 +108,7 @@ in {
         "html"
         "nix"
         "sql"
+        "qml"
       ];
     };
   };
