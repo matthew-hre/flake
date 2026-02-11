@@ -1,32 +1,5 @@
-{pkgs, ...}: {
+{
   programs.helix = {
-    extraPackages = with pkgs; [
-      # nix
-      nixd
-      alejandra
-
-      # web (html/css/js/ts/react/next)
-      nodePackages.typescript-language-server
-      vscode-langservers-extracted
-      tailwindcss-language-server
-      prettierd
-
-      # java / python
-      jdt-language-server
-      pyright
-
-      # zig / go / rust
-      # zls
-      gopls
-      rust-analyzer
-
-      # markdown + config languages
-      marksman
-      harper
-      taplo
-      yaml-language-server
-    ];
-
     languages = {
       language-server.harper-ls = {
         command = "harper-ls";
