@@ -6,7 +6,7 @@
 }: {
   programs.niri.settings.binds = with config.lib.niri.actions; let
     powerMenu = pkgs.writeShellScript "power-menu" ''
-      choice=$(echo -e " Lock\n Reboot\n⏻ Shutdown" | fuzzel --dmenu -l 7 -p "󰚥 ")
+      choice=$(echo -e "  Lock\n  Reboot\n⏻  Shutdown" | vicinae dmenu)
       case "$choice" in
         *"Lock")
           hyprlock
