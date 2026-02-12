@@ -7,6 +7,8 @@
 }: {
   options.modules.programs.niri.enable = lib.mkEnableOption "niri support";
 
+  imports = [inputs.niri-screen-recorder.nixosModules.default];
+
   config = let
     stashPkg = inputs.stash.packages.x86_64-linux.stash;
   in
@@ -23,6 +25,8 @@
         enable = true;
         package = pkgs.niri;
       };
+
+      services.niri-screen-recorder.enable = true;
 
       # install here to handle security permissions properly
       programs.gpu-screen-recorder.enable = true;

@@ -19,19 +19,6 @@
           ;;
       esac
     '';
-    screenRecord = pkgs.writeShellScript "screen-record" ''
-      pid=$(${pkgs.procps}/bin/pgrep -f "gpu-screen-recorder.*Screencasts")
-      if [ -n "$pid" ]; then
-        kill -SIGINT "$pid"
-        ${pkgs.libnotify}/bin/notify-send "Screen Recording" "Recording saved"
-      else
-        mkdir -p "$HOME/Screencasts"
-        filename="$HOME/Screencasts/$(date '+%Y-%m-%d_%H-%M-%S').mp4"
-        region=$(${pkgs.slurp}/bin/slurp -f '%wx%h+%x+%y') || exit 0
-        ${pkgs.gpu-screen-recorder}/bin/gpu-screen-recorder -w region -region "$region" -o "$filename" &
-        ${pkgs.libnotify}/bin/notify-send "Screen Recording" "Recording started"
-      fi
-    '';
     workspaceBindings = lib.listToAttrs (builtins.concatMap (i: [
       {
         name = "Mod+${toString i}";
@@ -86,7 +73,7 @@
       "Mod+Shift+S".action.screenshot = [];
       "Print".action.screenshot = [];
 
-      "Mod+Ctrl+Shift+S".action.spawn = ["${screenRecord}"];
+      "Mod+Ctrl+Shift+S".action.spawn = ["niri-screen-recorder" "toggle"];
 
       "Mod+Shift+Slash".action = show-hotkey-overlay;
 
