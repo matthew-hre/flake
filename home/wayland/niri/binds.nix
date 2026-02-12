@@ -2,17 +2,23 @@
   config,
   lib,
   pkgs,
+  osConfig,
   ...
 }: {
   programs.niri.settings.binds = with config.lib.niri.actions; let
+    enableSleep = (osConfig.networking.hostName or "") == "thwomp";
+    sleepEntry = lib.optionalString enableSleep "\n⏾  Sleep";
     powerMenu = pkgs.writeShellScript "power-menu" ''
-      choice=$(echo -e "  Lock\n  Reboot\n⏻  Shutdown" | vicinae dmenu)
+      choice=$(echo -e "  Lock\n  Reboot\n⏻  Shutdown${sleepEntry}" | vicinae dmenu)
       case "$choice" in
         *"Lock")
           hyprlock
           ;;
         *"Reboot")
           systemctl reboot
+          ;;
+        *"Sleep")
+          systemctl suspend
           ;;
         *"Shutdown")
           systemctl poweroff

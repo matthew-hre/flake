@@ -41,6 +41,20 @@
 
   services.xserver.enable = true;
 
+  services.logind.settings.Login = {
+    HandleSuspendKey = "suspend";
+    HandleSuspendKeyLongPress = "suspend";
+    HandleHibernateKey = "ignore";
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchDocked = "ignore";
+  };
+
+  systemd.sleep.extraConfig = ''
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
+
   services.udev.extraRules = ''
     ACTION=="add|change", SUBSYSTEM=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c547", ATTR{power/wakeup}="disabled"
   '';
