@@ -109,6 +109,7 @@ in {
         "nix"
         "sql"
         "qml"
+        "toml"
       ];
     };
   };
