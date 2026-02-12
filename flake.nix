@@ -98,7 +98,10 @@
         ./hosts/toad/configuration.nix
         {nixpkgs.overlays = [inputs.niri.overlays.niri];}
       ];
-      thwomp = lib.mkHost "thwomp" [./hosts/thwomp/configuration.nix];
+      thwomp = lib.mkHost "thwomp" [
+        ./hosts/thwomp/configuration.nix
+        {nixpkgs.overlays = [inputs.niri.overlays.niri];}
+      ];
     };
 
     checks.${system} = {

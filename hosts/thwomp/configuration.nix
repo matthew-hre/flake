@@ -21,8 +21,10 @@
     programs.discord.enable = true;
     programs.fonts.enable = true;
     programs.libre.enable = true;
+    programs.niri.enable = true;
     programs.plasma.enable = true;
     programs.steam.enable = true;
+    programs.xdg.enable = true;
 
     services.boot.enable = true;
     services.docker.enable = true;

@@ -1,9 +1,15 @@
-{pkgs, ...}: let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   makeCommand = command: {
     command = [command];
   };
 in {
   imports = [
+    inputs.niri.homeModules.niri
+
     ./binds.nix
     ./rules.nix
   ];
@@ -50,10 +56,37 @@ in {
 
       prefer-no-csd = true;
 
+      input = {
+        mouse.accel-profile = "flat";
+      };
+
+      # laptop
       outputs."eDP-1".mode = {
         width = 2880;
         height = 1920;
         refresh = 60.001;
+      };
+
+      # desktop
+      outputs."DP-2" = {
+        mode = {
+          width = 3440;
+          height = 1440;
+          refresh = 164.999;
+        };
+        position.x = 0;
+        position.y = 0;
+      };
+
+      outputs."HDMI-A-1" = {
+        mode = {
+          width = 2560;
+          height = 1440;
+          refresh = 59.951;
+        };
+        position.x = 1440;
+        position.y = -550;
+        transform.rotation = 90;
       };
 
       layout = {

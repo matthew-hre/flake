@@ -74,6 +74,12 @@
       "Mod+Shift+Up".action = move-window-up;
       "Mod+Shift+Right".action = move-column-right;
 
+      "Mod+Alt+Left".action = focus-monitor-left;
+      "Mod+Alt+Right".action = focus-monitor-right;
+
+      "Mod+Shift+Alt+Left".action = move-window-to-monitor-left;
+      "Mod+Shift+Alt+Right".action = move-window-to-monitor-right;
+
       "Mod+Shift+Ctrl+Left".action = consume-or-expel-window-left;
       "Mod+Shift+Ctrl+Right".action = consume-or-expel-window-right;
 
