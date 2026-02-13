@@ -1,4 +1,5 @@
 # My NixOS Configuration
+
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-unstable-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 [![Niri](https://img.shields.io/static/v1?label=NIRI&message=latest&style=flat&logo=hyprland&colorA=24273A&colorB=8AADF4&logoColor=CAD3F5)](https://github.com/YaLTeR/niri)
 
@@ -12,15 +13,15 @@ This is my NixOS configuration for both my desktop and laptop.
 
 ## Overview
 
-|                           | thwomp (Desktop) | toad (Laptop, Framework 13")                                          |
-| ------------------------- | ---------------- | --------------------------------------------------------------------- |
-| **DE / WM**               | KDE Plasma 6     | Niri                                                                  |
-| **Bar and Notifications** |                  | [Custom Quickshell](https://github.com/matthew-hre/quickshell-config) |
-| **Launcher**              | Fuzzel           | Vicinae                                                               |
-| **Shell**                 | fish + Tide      | fish + Tide                                                           |
-| **Editor**                | Helix + Zed      | Helix + Zed                                                           |
-| **Terminal**              | Ghostty          | Ghostty                                                               |
-| **Browser**               | Helium           | Helium                                                                |
+|                           | thwomp (Desktop)                                                      | toad (Laptop, Framework 13")                                          |
+| ------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| **DE / WM**               | Niri                                                                  | Niri                                                                  |
+| **Bar and Notifications** | [Custom Quickshell](https://github.com/matthew-hre/quickshell-config) | [Custom Quickshell](https://github.com/matthew-hre/quickshell-config) |
+| **Launcher**              | Vicinae                                                               | Vicinae                                                               |
+| **Shell**                 | fish + Tide                                                           | fish + Tide                                                           |
+| **Editor**                | Helix + Zed                                                           | Helix + Zed                                                           |
+| **Terminal**              | Ghostty                                                               | Ghostty                                                               |
+| **Browser**               | Helium                                                                | Helium                                                                |
 
 ### Quickshell
 
@@ -40,12 +41,12 @@ The Wayland bar on **toad** is powered by [Quickshell](https://git.outfoxxed.me/
 │   ├── shell/      # Shell setup (fish + Tide, Ghostty)
 │   └── wayland/    # Wayland environment (Niri, Quickshell, etc.)
 ├── hosts/          # Per-machine configuration
-│   ├── thwomp/     # Desktop — KDE Plasma 6
+│   ├── thwomp/     # Desktop — Niri + Quickshell
 │   └── toad/       # Laptop — Niri + Quickshell
 ├── lib/            # Helper functions (mkHost)
 ├── system/         # System-level modules
 │   ├── hardware/   # AMD GPU/CPU, Bluetooth, fingerprint reader, fwupd
-│   ├── programs/   # Discord, Steam, fonts, Niri, Plasma, XDG
+│   ├── programs/   # Discord, Steam, fonts, Niri, XDG
 │   └── services/   # greetd, PipeWire, Docker, OpenSSH, power mgmt, VPN
 └── users/          # User account definitions
 ```

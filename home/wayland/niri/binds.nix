@@ -8,11 +8,12 @@
   programs.niri.settings.binds = with config.lib.niri.actions; let
     enableSleep = (osConfig.networking.hostName or "") == "thwomp";
     sleepEntry = lib.optionalString enableSleep "\n⏾  Sleep";
+    lockCommand = "${pkgs.systemd}/bin/loginctl lock-session";
     powerMenu = pkgs.writeShellScript "power-menu" ''
       choice=$(echo -e "  Lock\n  Reboot\n⏻  Shutdown${sleepEntry}" | vicinae dmenu)
       case "$choice" in
         *"Lock")
-          hyprlock
+          ${lockCommand}
           ;;
         *"Reboot")
           systemctl reboot
@@ -49,7 +50,7 @@
       "Mod+V".action.spawn = ["vicinae" "vicinae://extensions/vicinae/clipboard/history"];
       "Mod+Period".action.spawn = ["vicinae" "vicinae://extensions/vicinae/core/search-emojis"];
 
-      "Mod+L".action.spawn = ["hyprlock"];
+      "Mod+L".action.spawn = ["${pkgs.systemd}/bin/loginctl" "lock-session"];
 
       "Mod+Minus".action = set-column-width "-10%";
       "Mod+Equal".action = set-column-width "+10%";
@@ -93,6 +94,8 @@
       "XF86AudioMute".allow-when-locked = true;
       "XF86AudioMicMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"];
       "XF86AudioMicMute".allow-when-locked = true;
+      "XF86AudioPlay".action.spawn = ["playerctl" "play-pause"];
+      "XF86AudioPlay".allow-when-locked = true;
       "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "5%-"];
       "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "5%+"];
 

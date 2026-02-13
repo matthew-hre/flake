@@ -23,7 +23,6 @@
     programs.fonts.enable = true;
     programs.libre.enable = true;
     programs.niri.enable = true;
-    programs.plasma.enable = true;
     programs.steam.enable = true;
     programs.xdg.enable = true;
 
@@ -38,8 +37,6 @@
   };
 
   networking.hostName = "thwomp";
-
-  services.xserver.enable = true;
 
   services.logind.settings.Login = {
     HandleSuspendKey = "suspend";
@@ -77,11 +74,6 @@
       patch = ./btusb.patch;
     }
   ];
-
-  environment.sessionVariables = {
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    OZONE_PLATFORM = "wayland";
-  };
 
   environment.systemPackages = with pkgs; [
     prismlauncher

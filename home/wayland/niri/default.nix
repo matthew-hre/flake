@@ -1,4 +1,5 @@
 {
+  hostname,
   inputs,
   pkgs,
   ...
@@ -6,6 +7,8 @@
   makeCommand = command: {
     command = [command];
   };
+
+  isDesktop = hostname == "thwomp";
 in {
   imports = [
     inputs.niri.homeModules.niri
@@ -51,7 +54,7 @@ in {
       gestures.hot-corners.enable = false;
 
       switch-events = {
-        lid-close.action.spawn = ["hyprlock"];
+        lid-close.action.spawn = ["${pkgs.systemd}/bin/loginctl" "lock-session"];
       };
 
       prefer-no-csd = true;
@@ -60,41 +63,47 @@ in {
         mouse.accel-profile = "flat";
       };
 
-      # laptop
-      outputs."eDP-1".mode = {
-        width = 2880;
-        height = 1920;
-        refresh = 60.001;
-      };
+      outputs =
+        if isDesktop
+        then {
+          "DP-2" = {
+            mode = {
+              width = 3440;
+              height = 1440;
+              refresh = 164.999;
+            };
+            position.x = 0;
+            position.y = 0;
+            focus-at-startup = true;
+          };
 
-      # desktop
-      outputs."DP-2" = {
-        mode = {
-          width = 3440;
-          height = 1440;
-          refresh = 164.999;
+          "HDMI-A-1" = {
+            mode = {
+              width = 2560;
+              height = 1440;
+              refresh = 59.951;
+            };
+            position.x = 1440;
+            position.y = -550;
+            transform.rotation = 90;
+          };
+        }
+        else {
+          "eDP-1".mode = {
+            width = 2880;
+            height = 1920;
+            refresh = 60.001;
+          };
         };
-        position.x = 0;
-        position.y = 0;
-        focus-at-startup = true;
-      };
-
-      outputs."HDMI-A-1" = {
-        mode = {
-          width = 2560;
-          height = 1440;
-          refresh = 59.951;
-        };
-        position.x = 1440;
-        position.y = -550;
-        transform.rotation = 90;
-      };
 
       layout = {
         gaps = 8;
         center-focused-column = "never";
 
-        default-column-width.proportion = 1.0;
+        default-column-width.proportion =
+          if isDesktop
+          then 0.5
+          else 1.0;
 
         background-color = "transparent";
 

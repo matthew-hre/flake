@@ -32,11 +32,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    kwin-effects-forceblur = {
-      url = "github:taj-ny/kwin-effects-forceblur";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ghostty = {
       url = "github:ghostty-org/ghostty";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -101,11 +96,9 @@
     nixosConfigurations = {
       toad = lib.mkHost "toad" [
         ./hosts/toad/configuration.nix
-        {nixpkgs.overlays = [inputs.niri.overlays.niri];}
       ];
       thwomp = lib.mkHost "thwomp" [
         ./hosts/thwomp/configuration.nix
-        {nixpkgs.overlays = [inputs.niri.overlays.niri];}
       ];
     };
 

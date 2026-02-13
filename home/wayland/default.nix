@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    # ./dunst
     ./gtk
     ./hypridle
     ./hyprlock

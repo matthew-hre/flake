@@ -5,6 +5,10 @@
       package = pkgs.dracula-theme;
       name = "Dracula";
     };
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
     gtk3.extraConfig = {
       gtk-font-name = "Work Sans 10";
     };

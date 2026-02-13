@@ -14,6 +14,7 @@
     libnotify
     nomacs
     obsidian
+    playerctl
     vim
 
     (pkgs.writeShellScriptBin "rebuild" ''
@@ -27,9 +28,7 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
 
-    # ELECTRON_OZONE_PLATFORM_HINT can be overridden per host
-    # mainly due to some kde issues
-    ELECTRON_OZONE_PLATFORM_HINT = lib.mkDefault "wayland";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
   };
 
   i18n.defaultLocale = "en_CA.UTF-8";
@@ -54,6 +53,4 @@
     enable = true;
     enable32Bit = true;
   };
-
-  services.xserver.xkb.layout = "us";
 }

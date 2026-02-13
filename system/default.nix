@@ -9,7 +9,6 @@
     ./programs/fonts.nix
     ./programs/libre.nix
     ./programs/niri.nix
-    ./programs/plasma.nix
     ./programs/steam.nix
     ./programs/xdg.nix
     ./services/boot.nix

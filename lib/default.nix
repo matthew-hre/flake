@@ -14,8 +14,11 @@ in {
         modules
         ++ [
           inputs.home-manager.nixosModules.home-manager
+          ../users/matthew_hre/default.nix
           ../users/matthew_hre/${hostname}.nix
+          ../users/vik
           {
+            nixpkgs.overlays = [inputs.niri.overlays.niri];
             environment.systemPackages = [
               inputs.ghostty.packages.${system}.default
             ];
