@@ -535,11 +535,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1770865737,
-        "narHash": "sha256-wUh4l08wmG1SakUnZx90pTgx0kN+XrOQ/9qEezrkXFA=",
+        "lastModified": 1770921348,
+        "narHash": "sha256-AqaISNMLwCzXtiDLdkxSv0fCp8K95EpFIHVqh/pK+fQ=",
         "owner": "matthew-hre",
         "repo": "niri-screen-recorder",
-        "rev": "fc9e797f050589b4c78a04ffa2f789f4b9318d7b",
+        "rev": "bf930d80b5fb4de6260c69edea5df429938eb640",
         "type": "github"
       },
       "original": {
@@ -711,11 +711,11 @@
         "quickshell": "quickshell_2"
       },
       "locked": {
-        "lastModified": 1770841536,
-        "narHash": "sha256-Oqou8dUzRgWni07ZskPYdGt4nVmd1Oor8gGLPQqBlDA=",
+        "lastModified": 1770925951,
+        "narHash": "sha256-4VxR6LAqPyUlPdXQc/QE2F09MCYqst79okeWRC0LnE4=",
         "owner": "matthew-hre",
         "repo": "quickshell-config",
-        "rev": "01d85779a1e03d46218a3cc207a69d21b4e3889e",
+        "rev": "7451c04ade5bceae2d4d9c2614b9b5a82e647310",
         "type": "github"
       },
       "original": {
