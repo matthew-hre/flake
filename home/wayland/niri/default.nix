@@ -76,6 +76,7 @@ in {
         };
         position.x = 0;
         position.y = 0;
+        focus-at-startup = true;
       };
 
       outputs."HDMI-A-1" = {

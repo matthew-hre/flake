@@ -56,7 +56,7 @@
       {
         matches = [
           {
-            app-id = "1Password";
+            app-id = "1password";
           }
         ];
         block-out-from = "screencast";

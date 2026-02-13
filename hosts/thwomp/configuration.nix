@@ -17,6 +17,7 @@
   modules = {
     hardware.amd.enable = true;
     hardware.bluetooth.enable = true;
+    hardware.bluetooth.enableControllerSupport = true;
 
     programs.discord.enable = true;
     programs.fonts.enable = true;
@@ -79,17 +80,6 @@
   services.solaar.enable = true;
 
   hardware.logitech.wireless.enable = true;
-
-  hardware.bluetooth = {
-    settings.General = {
-      experimental = true;
-
-      Privacy = "device";
-      JustWorksRepairing = "true";
-      Class = "0x000100";
-      FastConnectable = "true";
-    };
-  };
 
   hardware.xpadneo.enable = true;
 

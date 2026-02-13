@@ -7,6 +7,6 @@
 
   # programs.quickshellConfig.devPath = "/home/matthew_hre/.config/quickshell";
   programs.quickshellConfig = {
-    settings.showBattery = builtins.getEnv "HOSTNAME" != "thwomp";
+    settings.showBattery = builtins.getEnv "HOSTNAME" == "toad";
   };
 }
