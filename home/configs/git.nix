@@ -41,6 +41,8 @@ in {
         init = ["git" "init" "--colocate"];
       };
 
+      templates.git_push_bookmark = "\"matthew-hre/jj-\" ++ change_id.short()";
+
       ui = {
         editor = "hx";
       };

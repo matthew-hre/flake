@@ -690,11 +690,11 @@
         "quickshell": "quickshell_2"
       },
       "locked": {
-        "lastModified": 1770925951,
-        "narHash": "sha256-4VxR6LAqPyUlPdXQc/QE2F09MCYqst79okeWRC0LnE4=",
+        "lastModified": 1771290337,
+        "narHash": "sha256-sLTHx9k1reKbGmOLDbFWk+rUi1UyL8oDlR2VHjdVAoY=",
         "owner": "matthew-hre",
         "repo": "quickshell-config",
-        "rev": "7451c04ade5bceae2d4d9c2614b9b5a82e647310",
+        "rev": "3d7177ce71ac9f7a94234fa7c65d239c081249d1",
         "type": "github"
       },
       "original": {

@@ -99,6 +99,7 @@ in {
       layout = {
         gaps = 8;
         center-focused-column = "never";
+        always-center-single-column = true;
 
         default-column-width.proportion =
           if isDesktop

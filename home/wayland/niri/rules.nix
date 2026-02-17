@@ -1,4 +1,11 @@
-{
+{hostname, ...}: let
+  displayHeight =
+    if hostname == "thwomp"
+    then 1440
+    else 1920;
+  onePasswordHeight = 600;
+  centeredY = (displayHeight - onePasswordHeight) / 2 - 100;
+in {
   programs.niri.settings = {
     window-rules = [
       (let
@@ -60,6 +67,13 @@
           }
         ];
         block-out-from = "screencast";
+        open-floating = true;
+        default-window-height.fixed = onePasswordHeight;
+        default-floating-position = {
+          relative-to = "top";
+          x = 0;
+          y = centeredY;
+        };
       }
     ];
     layer-rules = [
