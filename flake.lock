@@ -9,11 +9,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1769353768,
-        "narHash": "sha256-zI+7cbMI4wMIR57jMjDSEsVb3grapTnURDxxJPYFIW0=",
+        "lastModified": 1771437256,
+        "narHash": "sha256-bLqwib+rtyBRRVBWhMuBXPCL/OThfokA+j6+uH7jDGU=",
         "owner": "numtide",
         "repo": "blueprint",
-        "rev": "c7da5c70ad1c9b60b6f5d4f674fbe205d48d8f6c",
+        "rev": "06ee7190dc2620ea98af9eb225aa9627b68b0e33",
         "type": "github"
       },
       "original": {
@@ -432,11 +432,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1770750687,
-        "narHash": "sha256-3gZRPe+bESQvtzLvHYZBQTbR1aFxbRjQRqKmGz7YLhI=",
+        "lastModified": 1771683321,
+        "narHash": "sha256-1hA61tGxHkYkFdy7JRkwQSrDg7FWV+S39wCy+daXDz8=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "4c3809132686a5df09cd4e818e97c3cc44aebba1",
+        "rev": "72854fc3507824405436e6967a4f6113fe1179d0",
         "type": "github"
       },
       "original": {
@@ -690,11 +690,11 @@
         "quickshell": "quickshell_2"
       },
       "locked": {
-        "lastModified": 1771290337,
-        "narHash": "sha256-sLTHx9k1reKbGmOLDbFWk+rUi1UyL8oDlR2VHjdVAoY=",
+        "lastModified": 1771566103,
+        "narHash": "sha256-CbiyIAytFYVXXIGu56kCRpnFMYnUEbnJpeVwWjv9bUs=",
         "owner": "matthew-hre",
         "repo": "quickshell-config",
-        "rev": "3d7177ce71ac9f7a94234fa7c65d239c081249d1",
+        "rev": "9933de14a343f19240db4054808aff303fae5d28",
         "type": "github"
       },
       "original": {

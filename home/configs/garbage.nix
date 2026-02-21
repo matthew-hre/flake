@@ -11,8 +11,8 @@
 
   services.dustpan = {
     enable = true;
-    roots = ["$HOME/Projects" "$HOME/repos"];
-    targets = ["node_modules" ".next" ".zig-cache"];
+    roots = ["$HOME/Projects" "$HOME/repos" "$HOME/University"];
+    targets = ["node_modules" ".next" ".zig-cache" "target"];
     olderThanDays = 14;
     frequency = "weekly";
   };
