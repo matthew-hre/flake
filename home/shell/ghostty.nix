@@ -20,6 +20,9 @@ in {
       font-size = 11;
       gtk-wide-tabs = false;
 
+      background-blur = true;
+      background-opacity = 0.8;
+
       window-inherit-working-directory = true;
       theme = "Dracula";
       # background = "#1a1b23";

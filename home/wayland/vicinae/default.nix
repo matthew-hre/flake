@@ -29,6 +29,9 @@
           icon_theme = "default";
         };
       };
+      launcher_window = {
+        opacity = 0.80;
+      };
     };
   };
 }

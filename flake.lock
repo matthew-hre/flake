@@ -485,7 +485,9 @@
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
-        "niri-unstable": "niri-unstable",
+        "niri-unstable": [
+          "niri-custom"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -504,6 +506,23 @@
       "original": {
         "owner": "sodiboo",
         "repo": "niri-flake",
+        "type": "github"
+      }
+    },
+    "niri-custom": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771683761,
+        "narHash": "sha256-ZaASbpeFF3sQ8uJAheuuuDMnymqpLfrsyf3hr9B5CMM=",
+        "owner": "niri-wm",
+        "repo": "niri",
+        "rev": "3b9f6ca062056348ef1a280716718d96c591246d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "niri-wm",
+        "ref": "wip/branch",
+        "repo": "niri",
         "type": "github"
       }
     },
@@ -540,22 +559,6 @@
       "original": {
         "owner": "YaLTeR",
         "ref": "v25.08",
-        "repo": "niri",
-        "type": "github"
-      }
-    },
-    "niri-unstable": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770735554,
-        "narHash": "sha256-8GzUa8bCyQ688jYW2waXrOqetTr7oV8UPTO2He+5Hsg=",
-        "owner": "YaLTeR",
-        "repo": "niri",
-        "rev": "41b5de87692b8262fbdbff7faab93f04ff0be453",
-        "type": "github"
-      },
-      "original": {
-        "owner": "YaLTeR",
         "repo": "niri",
         "type": "github"
       }
@@ -734,6 +737,7 @@
         "ink": "ink",
         "llm-agents": "llm-agents",
         "niri": "niri",
+        "niri-custom": "niri-custom",
         "niri-screen-recorder": "niri-screen-recorder",
         "nixpkgs": "nixpkgs_2",
         "nvf": "nvf",

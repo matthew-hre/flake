@@ -40,6 +40,12 @@
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.niri-unstable.follows = "niri-custom";
+    };
+
+    niri-custom = {
+      url = "github:niri-wm/niri/wip/branch";
+      flake = false;
     };
 
     niri-screen-recorder = {

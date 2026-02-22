@@ -23,7 +23,7 @@
 
       programs.niri = {
         enable = true;
-        package = pkgs.niri;
+        package = pkgs.niri-unstable;
       };
 
       services.niri-screen-recorder.enable = true;

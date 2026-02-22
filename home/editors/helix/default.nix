@@ -4,7 +4,7 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "dracula";
+      theme = "dracula_transparent";
       editor = {
         color-modes = true;
         cursorline = true;
@@ -20,6 +20,13 @@
           display-inlay-hints = true;
         };
         auto-pairs = true;
+      };
+    };
+
+    themes = {
+      dracula_transparent = {
+        "inherits" = "dracula";
+        "ui.background" = {};
       };
     };
   };
