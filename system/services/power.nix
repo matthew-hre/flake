@@ -7,6 +7,7 @@
   options.modules.services.power.enable = lib.mkEnableOption "power support";
 
   config = lib.mkIf config.modules.services.power.enable {
+    services.upower.enable = true;
     services.power-profiles-daemon.enable = false;
 
     services.tlp = {
