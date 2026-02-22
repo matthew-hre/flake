@@ -21,5 +21,7 @@
         FastConnectable = "true";
       };
     };
+
+    hardware.xpadneo.enable = config.modules.hardware.bluetooth.enableControllerSupport;
   };
 }

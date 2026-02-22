@@ -31,7 +31,7 @@ in {
       };
 
       spawn-at-startup = [
-        (makeCommand "swww-daemon")
+        (makeCommand "awww-daemon")
         (makeCommand "NetworkManager")
         (makeCommand "qs")
         {command = ["stash" "watch"];}
@@ -66,7 +66,7 @@ in {
       outputs =
         if isDesktop
         then {
-          "DP-2" = {
+          "DP-1" = {
             mode = {
               width = 3440;
               height = 1440;
@@ -77,7 +77,7 @@ in {
             focus-at-startup = true;
           };
 
-          "DP-1" = {
+          "DP-2" = {
             mode = {
               width = 2560;
               height = 1440;

@@ -65,8 +65,12 @@
     };
   };
 
-  hardware.enableAllFirmware = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.extraModprobeConfig = ''
+    options btusb enable_autosuspend=0
+    options rtw89_pci disable_clkreq=Y disable_aspm_l1=Y disable_aspm_l1ss=Y
+  '';
 
   boot.kernelPatches = [
     {
@@ -86,8 +90,6 @@
   services.solaar.enable = true;
 
   hardware.logitech.wireless.enable = true;
-
-  hardware.xpadneo.enable = true;
 
   boot.extraModulePackages = with config.boot.kernelPackages; [xpadneo];
 

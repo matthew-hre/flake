@@ -7,14 +7,16 @@
 }: {
   options.modules.programs.niri.enable = lib.mkEnableOption "niri support";
 
-  imports = [inputs.niri-screen-recorder.nixosModules.default];
+  imports = [
+    inputs.niri-screen-recorder.nixosModules.default
+  ];
 
   config = let
     stashPkg = inputs.stash.packages.x86_64-linux.stash;
   in
     lib.mkIf config.modules.programs.niri.enable {
       environment.systemPackages = with pkgs; [
-        swww # needs to be installed at the system level
+        inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww # needs to be installed at the system level
         polkit_gnome
         stashPkg
       ];

@@ -2,6 +2,11 @@
   description = "NixOS configuration";
 
   inputs = {
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     dustpan = {
       url = "github:matthew-hre/dustpan";
       inputs.nixpkgs.follows = "nixpkgs";
