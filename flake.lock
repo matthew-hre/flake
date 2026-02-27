@@ -731,11 +731,11 @@
         "quickshell": "quickshell_2"
       },
       "locked": {
-        "lastModified": 1771722485,
-        "narHash": "sha256-VCMCdJAcOz2pwYwy0v/soc6iEdRQ1X2nm5D4vjXxUts=",
+        "lastModified": 1772157231,
+        "narHash": "sha256-04vwWmnldg5sFCfEBEVt31uV7pJASQtumMPxCJ5IiHE=",
         "owner": "matthew-hre",
         "repo": "quickshell-config",
-        "rev": "4d11d02d556c4689831a4fb584d835f15785df82",
+        "rev": "f20ab3e7e05c19dc66d7cc5b2e9c8517af4a6635",
         "type": "github"
       },
       "original": {
