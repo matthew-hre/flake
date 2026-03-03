@@ -12,6 +12,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,23 +27,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ink = {
-      url = "github:theMackabu/ink";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    llm-agents = {
-      url = "github:numtide/llm-agents.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
+    ink = {
+      url = "github:theMackabu/ink";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    jj = {
+      url = "github:jj-vcs/jj";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

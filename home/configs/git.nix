@@ -1,4 +1,4 @@
-let
+{inputs, ...}: let
   user = {
     name = "Matthew Hrehirchuk";
     email = "me@matthew-hre.com";
@@ -34,6 +34,8 @@ in {
 
   programs.jujutsu = {
     enable = true;
+    package = inputs.jj.packages.x86_64-linux.jujutsu;
+
     settings = {
       inherit user;
 

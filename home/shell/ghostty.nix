@@ -32,6 +32,10 @@ in {
       window-padding-y = 16;
       window-padding-balance = true;
       keybind = ["ctrl+shift+l=new_split:right" "ctrl+shift+d=new_split:down"];
+
+      quit-after-last-window-closed = false;
     };
+
+    systemd.enable = true;
   };
 }
