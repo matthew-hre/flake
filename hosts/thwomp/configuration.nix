@@ -37,6 +37,7 @@
   };
 
   networking.hostName = "thwomp";
+  networking.interfaces.eno1.wakeOnLan.enable = true;
 
   services.logind.settings.Login = {
     HandleSuspendKey = "suspend";
@@ -46,11 +47,11 @@
     HandleLidSwitchDocked = "ignore";
   };
 
-  systemd.sleep.extraConfig = ''
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
 
   services.udev.extraRules = ''
     ACTION=="add|change", SUBSYSTEM=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c547", ATTR{power/wakeup}="disabled"
