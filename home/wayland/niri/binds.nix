@@ -6,7 +6,7 @@
   ...
 }: {
   programs.niri.settings.binds = with config.lib.niri.actions; let
-    enableSleep = (osConfig.networking.hostName or "") == "thwomp";
+    enableSleep = (osConfig.networking.hostName or "") == "donkeykong";
     sleepEntry = lib.optionalString enableSleep "\n⏾  Sleep";
     lockCommand = "${pkgs.systemd}/bin/loginctl lock-session";
     powerMenu = pkgs.writeShellScript "power-menu" ''

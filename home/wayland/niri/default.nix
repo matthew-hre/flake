@@ -8,7 +8,7 @@
     command = [command];
   };
 
-  isDesktop = hostname == "thwomp";
+  isDesktop = hostname == "donkeykong";
 in {
   imports = [
     inputs.niri.homeModules.niri

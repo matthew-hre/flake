@@ -13,7 +13,7 @@ This is my NixOS configuration for both my desktop and laptop.
 
 ## Overview
 
-|                           | thwomp (Desktop)                                                      | toad (Laptop, Framework 13")                                          |
+|                           | donkeykong (Desktop)                                                      | toad (Laptop, Framework 13")                                          |
 | ------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | **DE / WM**               | Niri                                                                  | Niri                                                                  |
 | **Bar and Notifications** | [Custom Quickshell](https://github.com/matthew-hre/quickshell-config) | [Custom Quickshell](https://github.com/matthew-hre/quickshell-config) |
@@ -41,7 +41,7 @@ The Wayland bar on **toad** is powered by [Quickshell](https://git.outfoxxed.me/
 │   ├── shell/      # Shell setup (fish + Tide, Ghostty)
 │   └── wayland/    # Wayland environment (Niri, Quickshell, etc.)
 ├── hosts/          # Per-machine configuration
-│   ├── thwomp/     # Desktop — Niri + Quickshell
+│   ├── donkeykong/     # Desktop — Niri + Quickshell
 │   └── toad/       # Laptop — Niri + Quickshell
 ├── lib/            # Helper functions (mkHost)
 ├── system/         # System-level modules
@@ -55,7 +55,7 @@ Hosts are built with a `mkHost` helper in `lib/` that wires up Home Manager, inj
 
 ## Systems
 
-### Thwomp (Desktop)
+### donkeykong (Desktop)
 
 - **CPU**: AMD Ryzen 7 9700X
 - **GPU**: AMD Radeon RX 7800 XT
@@ -63,7 +63,7 @@ Hosts are built with a `mkHost` helper in `lib/` that wires up Home Manager, inj
 - **Storage**: 1 TB NVMe SSD Boot + 2 TB NVMe SSD Steam Drive
 - **Display**: 32" UltraWide 1440p Monitor + 27" 1440p Monitor
 
-### Toad (Laptop)
+### toad (Laptop)
 
 - **Model**: Framework Laptop 13" (2024)
 - **CPU**: AMD Ryzen 7 7840U

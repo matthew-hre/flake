@@ -113,8 +113,8 @@
       toad = lib.mkHost "toad" [
         ./hosts/toad/configuration.nix
       ];
-      thwomp = lib.mkHost "thwomp" [
-        ./hosts/thwomp/configuration.nix
+      donkeykong = lib.mkHost "donkeykong" [
+        ./hosts/donkeykong/configuration.nix
       ];
     };
 
