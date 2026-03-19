@@ -8,7 +8,7 @@
   lock = "${pkgs.systemd}/bin/loginctl lock-session";
 
   timeout =
-    if hostname == "thwomp"
+    if hostname == "donkeykong"
     then 1800
     else 300;
 in {

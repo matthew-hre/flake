@@ -36,7 +36,7 @@
     services.security.enable = true;
   };
 
-  networking.hostName = "thwomp";
+  networking.hostName = "donkeykong";
   networking.interfaces.eno1.wakeOnLan.enable = true;
 
   services.logind.settings.Login = {
