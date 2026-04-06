@@ -6,7 +6,7 @@
     alejandra
 
     # web (html/css/js/ts/react/next)
-    nodePackages.typescript-language-server
+    typescript-language-server
     vscode-langservers-extracted
     tailwindcss-language-server
     prettierd

@@ -23,6 +23,7 @@
         "bluez5.enable-hw-volume" = true; ### <<< Enables touch slider on headphones for fader gain, pause, and unpause functionality
         "bluez5.auto-connect" = ["a2dp_sink"]; ### <<< Autoconnect to HD 48khz mode on connect
         "bluez5.roles" = ["a2dp_sink" "a2dp_source"]; ### <<< This  sets the BT driver role to a2dp sink and source, which are the HD 44.1khz and 48khz module modesets but doesnt load the modules for hsp, which is the handset driver that enables the mic.
+        "bluez5.codecs" = ["sbc" "sbc_xq" "aac" "aptx" "aptx_hd"]; ### <<< Exclude LDAC due to libldac-dec bug in PipeWire 1.6.2 (nixpkgs#502690)
       };
     };
   };

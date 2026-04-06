@@ -1,6 +1,11 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   gtk = {
     enable = true;
+    gtk4.theme = config.gtk.theme;
     theme = {
       package = pkgs.dracula-theme;
       name = "Dracula";

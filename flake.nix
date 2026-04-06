@@ -94,9 +94,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Don't follow nixpkgs — Zed's livekit build breaks with mismatched nixpkgs
     zed = {
       url = "github:zed-industries/zed";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
