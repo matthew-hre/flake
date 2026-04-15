@@ -54,7 +54,7 @@
     };
 
     niri-custom = {
-      url = "github:niri-wm/niri/wip/branch";
+      url = "github:niri-wm/niri/main";
       flake = false;
     };
 

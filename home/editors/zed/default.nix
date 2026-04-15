@@ -31,7 +31,7 @@ in {
       enable = true;
       package = zedPackage;
       userSettings = {
-        theme = "Dracula";
+        theme = "Dracula Flat";
         load_direnv = "shell_hook";
 
         project_panel.dock = "right";
