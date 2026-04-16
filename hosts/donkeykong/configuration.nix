@@ -83,10 +83,13 @@
   environment.systemPackages = with pkgs; [
     prismlauncher
     protonup-qt
+    filezilla
     tidal-hifi
     rocmPackages.rocm-smi
     satisfactorymodmanager
   ];
+
+  programs.kdeconnect.enable = true;
 
   services.solaar.enable = true;
 
