@@ -13,8 +13,6 @@
       settings.Policy.AutoEnable = true;
 
       settings.General = lib.mkIf config.modules.hardware.bluetooth.enableControllerSupport {
-        experimental = true;
-
         Privacy = "device";
         JustWorksRepairing = "true";
         Class = "0x000100";

@@ -16,6 +16,13 @@
       controlPersist = "no";
     };
 
+    matchBlocks."knot.matthew-hre.com" = {
+      hostname = "knot.matthew-hre.com";
+      port = 2222;
+      user = "git";
+      addressFamily = "inet";
+    };
+
     extraConfig = "
 Host *
   IdentityAgent ~/.1password/agent.sock
