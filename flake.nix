@@ -8,7 +8,7 @@
     };
 
     dustpan = {
-      url = "github:matthew-hre/dustpan";
+      url = "git+https://tangled.org/matthew-hre.com/dustpan";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
