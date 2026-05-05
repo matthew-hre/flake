@@ -45,7 +45,6 @@
     enable = true;
     polkitPolicyOwners = ["matthew_hre"];
   };
-  programs.wireshark.enable = true;
 
   services.printing.enable = true;
 

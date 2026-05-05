@@ -47,7 +47,6 @@
         pciutils
         usbutils
         xclip
-        wireshark
         inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.amp
         inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code
         inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.crush
