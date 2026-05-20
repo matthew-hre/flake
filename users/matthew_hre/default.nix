@@ -26,6 +26,7 @@
       username = "matthew_hre";
       homeDirectory = "/home/matthew_hre";
       stateVersion = "23.11";
+      enableNixpkgsReleaseCheck = false;
 
       packages = with pkgs; [
         zip

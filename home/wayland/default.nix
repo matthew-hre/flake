@@ -37,6 +37,8 @@
       defaultApplications = {
         "x-scheme-handler/http" = "helium.desktop";
         "x-scheme-handler/https" = "helium.desktop";
+        "inode/directory" = "org.gnome.Nautilus.desktop";
+        "application/x-gnome-saved-search" = "org.gnome.Nautilus.desktop";
       };
     };
   };
