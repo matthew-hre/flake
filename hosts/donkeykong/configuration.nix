@@ -73,13 +73,6 @@
     options rtw89_pci disable_clkreq=Y disable_aspm_l1=Y disable_aspm_l1ss=Y
   '';
 
-  boot.kernelPatches = [
-    {
-      name = "btusb-patch";
-      patch = ./btusb.patch;
-    }
-  ];
-
   environment.systemPackages = with pkgs; [
     prismlauncher
     protonup-qt
