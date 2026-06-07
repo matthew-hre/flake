@@ -32,6 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hunk = {
+      url = "github:modem-dev/hunk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ink = {
       url = "github:theMackabu/ink";
       inputs.nixpkgs.follows = "nixpkgs";

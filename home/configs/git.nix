@@ -1,9 +1,17 @@
-{inputs, ...}: let
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   user = {
     name = "Matthew Hrehirchuk";
     email = "me@matthew-hre.com";
   };
 in {
+  home.packages = [
+    inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
+  ];
+
   programs.git = {
     enable = true;
 
