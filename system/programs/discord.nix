@@ -8,9 +8,12 @@
 
   config = lib.mkIf config.modules.programs.discord.enable {
     environment.systemPackages = with pkgs; [
-      (discord.override {
-        withOpenASAR = true;
-      })
+      #(discord.override {
+      #  withOpenASAR = true;
+      #  withVencord = true;
+      #})
+      #vesktop
+      discord
     ];
   };
 }
