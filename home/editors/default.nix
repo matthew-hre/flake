@@ -5,6 +5,6 @@
     ./helix
     # ./nvf
     ./vscode
-    ./zed
+    # ./zed
   ];
 }
