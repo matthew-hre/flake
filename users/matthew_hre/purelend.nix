@@ -1,11 +1,12 @@
 {lib, ...}: {
-  # Gradual HM cutover on Debian. Add one module at a time, e.g.:
+  # Gradual HM cutover on Debian (toad dual-boot). Add modules one at a time, e.g.:
   #   ../../home/configs/jujutsu.nix
   #   ../../home/shell/fish.nix
   #   ../../home/editors/helix
   imports = [
     ./home-base.nix
     ../../home/configs/bat.nix # pager used by git
+    ../../home/configs/btop.nix
     ../../home/configs/git.nix
   ];
 
