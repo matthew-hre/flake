@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: let
   ghostty = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
@@ -38,4 +39,8 @@ in {
 
     systemd.enable = true;
   };
+
+  xdg.configFile."ghostty/config.ghostty".source =
+    config.xdg.configFile."ghostty/config".source;
 }
+
