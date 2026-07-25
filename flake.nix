@@ -123,6 +123,12 @@
       ];
     };
 
+    homeConfigurations = {
+      purelend = lib.mkHome "purelend" [
+        ./users/matthew_hre/purelend.nix
+      ];
+    };
+
     checks.${system} = {
       pre-commit-check = inputs.git-hooks.lib.${system}.run {
         src = ./.;

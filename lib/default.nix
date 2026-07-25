@@ -31,4 +31,14 @@ in {
           }
         ];
     };
+
+  mkHome = hostname: modules:
+    inputs.home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      extraSpecialArgs = {inherit inputs hostname;};
+      modules = modules;
+    };
 }
