@@ -4,6 +4,7 @@
     ./btop.nix
     ./direnv.nix
     ./fastfetch.nix
+    ./fzf.nix
     ./garbage.nix
 
     ./git.nix

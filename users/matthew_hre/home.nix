@@ -19,7 +19,6 @@
       ripgrep
       eza
       fd
-      television
       zoxide
       wl-clipboard
       gh
