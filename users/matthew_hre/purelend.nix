@@ -30,29 +30,27 @@
 
   programs.ghostty.settings = {
     theme = lib.mkForce "Cursor Dark";
-    window-padding-x = lib.mkForce 8;
-    window-padding-y = lib.mkForce 8;
     background-blur = lib.mkForce false;
     background-opacity = lib.mkForce 1.0;
   };
 
-  # mise is installed under ~/.local on this host (not via nix).
-  # Login shell is bash (interactive sessions exec into fish). Put shims on the
-  # session PATH so non-interactive bash — Cursor agents, scripts — can resolve
-  # tools without fish activation. Additive: HM prepends these to existing PATH.
+  # mise CLI via nix-profile (agents already have ~/.nix-profile/bin on PATH).
+  # Interactive fish: HM `activate`. Non-interactive/IDE: shims on session PATH.
   # https://mise.en.dev/dev-tools/shims.html
+  programs.mise = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
+
   home.sessionPath = [
     "$HOME/.local/share/mise/shims"
     "$HOME/.local/bin"
   ];
 
-  programs.fish.interactiveShellInit = lib.mkAfter ''
-    fish_add_path $HOME/.local/bin
-    mise activate fish | source
-  '';
   programs.fish.shellInit = lib.mkAfter ''
     if not status is-interactive
-        mise activate fish --shims | source
+        ${lib.getExe pkgs.mise} activate fish --shims | source
     end
   '';
 }
