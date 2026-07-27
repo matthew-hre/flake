@@ -37,6 +37,15 @@
   };
 
   # mise is installed under ~/.local on this host (not via nix).
+  # Login shell is bash (interactive sessions exec into fish). Put shims on the
+  # session PATH so non-interactive bash — Cursor agents, scripts — can resolve
+  # tools without fish activation. Additive: HM prepends these to existing PATH.
+  # https://mise.en.dev/dev-tools/shims.html
+  home.sessionPath = [
+    "$HOME/.local/share/mise/shims"
+    "$HOME/.local/bin"
+  ];
+
   programs.fish.interactiveShellInit = lib.mkAfter ''
     fish_add_path $HOME/.local/bin
     mise activate fish | source
