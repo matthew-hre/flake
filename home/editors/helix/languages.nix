@@ -1,82 +1,124 @@
 {
   programs.helix = {
     languages = {
-      language-server.harper-ls = {
-        command = "harper-ls";
-        args = ["--stdio"];
+      language-server = {
+        oxlint = {
+          command = "pnpx";
+          args = ["oxlint" "--lsp"];
+        };
+        oxfmt = {
+          command = "pnpx";
+          args = ["oxfmt" "--lsp"];
+        };
+        harper-ls = {
+          command = "harper-ls";
+          args = ["--stdio"];
+        };
       };
 
       language = [
         {
+          name = "git-commit";
+          language-servers = ["harper-ls"];
+        }
+        {
+          name = "jjdescription";
+          language-servers = ["harper-ls"];
+        }
+        {
           name = "nix";
-          language-servers = ["nixd"];
+          language-servers = ["nil" "nixd" "harper-ls"];
           formatter.command = "alejandra";
           auto-format = true;
         }
         {
           name = "typescript";
-          formatter = {
-            command = "prettierd";
-            args = ["--parser" "typescript"];
-          };
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = ["format"];
+            }
+            "oxlint"
+            {
+              name = "oxfmt";
+              only-features = ["format"];
+            }
+            "harper-ls"
+          ];
           auto-format = true;
         }
         {
           name = "tsx";
-          formatter = {
-            command = "prettierd";
-            args = ["--parser" "typescript"];
-          };
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = ["format"];
+            }
+            "oxlint"
+            {
+              name = "oxfmt";
+              only-features = ["format"];
+            }
+            "harper-ls"
+          ];
           auto-format = true;
         }
         {
           name = "javascript";
-          formatter = {
-            command = "prettierd";
-            args = ["--parser" "babel"];
-          };
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = ["format"];
+            }
+            "oxlint"
+            {
+              name = "oxfmt";
+              only-features = ["format"];
+            }
+            "harper-ls"
+          ];
           auto-format = true;
         }
         {
           name = "jsx";
-          formatter = {
-            command = "prettierd";
-            args = ["--parser" "babel"];
-          };
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = ["format"];
+            }
+            "oxlint"
+            {
+              name = "oxfmt";
+              only-features = ["format"];
+            }
+            "harper-ls"
+          ];
           auto-format = true;
         }
         {
           name = "html";
-          formatter = {
-            command = "prettierd";
-            args = ["--parser" "html"];
-          };
-          auto-format = true;
-        }
-        {
-          name = "css";
-          formatter = {
-            command = "prettierd";
-            args = ["--parser" "css"];
-          };
-          auto-format = true;
-        }
-        {
-          name = "json";
-          formatter = {
-            command = "prettierd";
-            args = ["--parser" "json"];
-          };
-          auto-format = true;
+          language-servers = [
+            "vscode-html-language-server"
+            "superhtml"
+            "harper-ls"
+          ];
         }
         {
           name = "markdown";
-          language-servers = ["marksman" "harper-ls"];
-          formatter = {
-            command = "prettierd";
-            args = ["--parser" "markdown"];
-          };
-          auto-format = true;
+          language-servers = ["marksman" "markdown-oxide" "harper-ls"];
+          soft-wrap.enable = true;
+        }
+        {
+          name = "python";
+          language-servers = ["ty" "ruff" "harper-ls"];
+        }
+        {
+          name = "bash";
+          language-servers = ["bash-language-server" "harper-ls"];
+        }
+        {
+          name = "toml";
+          language-servers = ["taplo" "tombi" "harper-ls"];
         }
       ];
     };

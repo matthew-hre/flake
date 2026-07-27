@@ -9,21 +9,26 @@
     typescript-language-server
     vscode-langservers-extracted
     tailwindcss-language-server
-    prettierd
+    # oxlint/oxfmt: Helix uses `pnpx` so project node_modules win; not on PATH
+    superhtml
 
-    # java / python
+    # python
+    ruff
+    ty
+
+    # java / go
     jdt-language-server
-    pyright
-
-    # zig / go / rust
     # zls - TODO: wait for master to get merged into nixpkgs-unstable
     gopls
-    rust-analyzer
 
-    # markdown + config languages
+    # shell / markdown / config
+    bash-language-server
     marksman
+    markdown-oxide
     harper
     taplo
+    tombi
     yaml-language-server
+    terraform-ls
   ];
 }

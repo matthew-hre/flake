@@ -3,9 +3,7 @@
   pkgs,
   ...
 }: {
-  # Gradual HM cutover on Debian (toad dual-boot). Add modules one at a time, e.g.:
-  #   ../../home/configs/jujutsu.nix
-  #   ../../home/editors/helix
+  # Gradual HM cutover on Debian (toad dual-boot). Add modules one at a time.
   imports = [
     ./home-base.nix
     ../../home/configs/bat.nix # pager used by git
@@ -14,6 +12,8 @@
     ../../home/shell/fish.nix
     ../../home/configs/git.nix
     ../../home/shell/ghostty.nix
+    ../../home/editors/language-servers.nix
+    # ../../home/editors/helix  # next: merge local ~/.config/helix
   ];
 
   targets.genericLinux.enable = true;
