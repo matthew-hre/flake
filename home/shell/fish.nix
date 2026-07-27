@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -85,6 +90,19 @@
         set_color normal
       '';
     };
+  };
+
+  # On non-NixOS, keep a POSIX login shell and only enter fish interactively.
+  # Avoids /etc/passwd pointing at a nix-profile path that can disappear.
+  programs.bash = lib.mkIf config.targets.genericLinux.enable {
+    enable = true;
+    initExtra = ''
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
   };
 
   programs.zoxide = {
