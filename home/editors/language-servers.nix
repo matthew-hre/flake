@@ -16,8 +16,7 @@
     ruff
     ty
 
-    # java / go
-    jdt-language-server
+    # go
     # zls - TODO: wait for master to get merged into nixpkgs-unstable
     gopls
 
