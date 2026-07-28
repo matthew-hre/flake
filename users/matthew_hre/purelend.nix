@@ -11,6 +11,7 @@
     ../../home/configs/fzf.nix
     ../../home/shell/fish.nix
     ../../home/configs/git.nix
+    ../../home/configs/jujutsu.nix
     ../../home/shell/ghostty.nix
     ../../home/editors/language-servers.nix
     # ../../home/editors/helix  # next: merge local ~/.config/helix
@@ -24,6 +25,7 @@
 
   # Work identity on this host (personal email stays the NixOS default).
   programs.git.settings.user.email = lib.mkForce "matthew@purelend.ai";
+  programs.jujutsu.settings.user.email = lib.mkForce "matthew@purelend.ai";
 
   # themes.gitconfig is not present on this machine yet.
   programs.git.settings.include = lib.mkForce {};
