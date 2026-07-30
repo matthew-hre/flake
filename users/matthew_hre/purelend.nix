@@ -8,7 +8,11 @@
     ./home-base.nix
     ../../home/configs/bat.nix # pager used by git
     ../../home/configs/btop.nix
+    ../../home/configs/direnv.nix
+    ../../home/configs/fastfetch.nix
     ../../home/configs/fzf.nix
+    ../../home/configs/ssh.nix
+    ../../home/configs/yazi.nix
     ../../home/shell/fish.nix
     ../../home/configs/git.nix
     ../../home/configs/jujutsu.nix
@@ -21,6 +25,24 @@
 
   home.packages = with pkgs; [
     eza
+    fd
+    gh
+    glow
+    lazygit
+    lazydocker
+    ltrace
+    nix-output-monitor
+    onefetch
+    p7zip
+    pciutils
+    ripgrep
+    strace
+    unzip
+    usbutils
+    wl-clipboard
+    xclip
+    xz
+    zip
   ];
 
   # Work identity on this host (personal email stays the NixOS default).
