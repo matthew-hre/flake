@@ -56,6 +56,11 @@
     theme = lib.mkForce "Cursor Dark";
     background-blur = lib.mkForce false;
     background-opacity = lib.mkForce 1.0;
+
+    # genericLinux keeps bash in passwd; launch fish explicitly in ghostty.
+    command = lib.mkForce "${pkgs.fish}/bin/fish";
+    shell-integration = lib.mkForce "fish";
+    shell-integration-features = lib.mkForce "cursor,sudo,title,no-cursor";
   };
 
   # mise CLI via nix-profile (agents already have ~/.nix-profile/bin on PATH).
@@ -67,10 +72,16 @@
     enableFishIntegration = true;
   };
 
+  # niri-session imports systemd user env (not your shell). Keep nix/HM on PATH there.
   home.sessionPath = [
+    "$HOME/.nix-profile/bin"
+    "/nix/var/nix/profiles/default/bin"
     "$HOME/.local/share/mise/shims"
     "$HOME/.local/bin"
   ];
+
+  systemd.user.sessionVariables.PATH =
+    "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/share/mise/shims:$HOME/.local/bin\${PATH:+:\$PATH}";
 
   programs.fish.shellInit = lib.mkAfter ''
     if not status is-interactive
