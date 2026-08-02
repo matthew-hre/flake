@@ -1,31 +1,9 @@
 {
   config,
   lib,
-  pkgs,
-  osConfig,
   ...
 }: {
   programs.niri.settings.binds = with config.lib.niri.actions; let
-    enableSleep = (osConfig.networking.hostName or "") == "donkeykong";
-    sleepEntry = lib.optionalString enableSleep "\n⏾  Sleep";
-    lockCommand = "${pkgs.systemd}/bin/loginctl lock-session";
-    powerMenu = pkgs.writeShellScript "power-menu" ''
-      choice=$(echo -e "  Lock\n  Reboot\n⏻  Shutdown${sleepEntry}" | vicinae dmenu)
-      case "$choice" in
-        *"Lock")
-          ${lockCommand}
-          ;;
-        *"Reboot")
-          systemctl reboot
-          ;;
-        *"Sleep")
-          systemctl suspend
-          ;;
-        *"Shutdown")
-          systemctl poweroff
-          ;;
-      esac
-    '';
     workspaceBindings = lib.listToAttrs (builtins.concatMap (i: [
       {
         name = "Mod+${toString i}";
@@ -50,7 +28,10 @@
       "Mod+V".action.spawn = ["vicinae" "vicinae://extensions/vicinae/clipboard/history"];
       "Mod+Period".action.spawn = ["vicinae" "vicinae://extensions/vicinae/core/search-emojis"];
 
-      "Mod+L".action.spawn = ["${pkgs.systemd}/bin/loginctl" "lock-session"];
+      "Mod+L".action.spawn = ["dms" "ipc" "call" "lock" "lock"];
+      "Mod+N".action.spawn = ["dms" "ipc" "call" "notifications" "toggle"];
+      "Mod+M".action.spawn = ["dms" "ipc" "call" "processlist" "focusOrToggle"];
+      "Mod+Comma".action.spawn = ["dms" "ipc" "call" "settings" "focusOrToggle"];
 
       "Mod+Minus".action = set-column-width "-10%";
       "Mod+Equal".action = set-column-width "+10%";
@@ -78,26 +59,33 @@
       "Mod+Shift+Ctrl+Right".action = consume-or-expel-window-right;
 
       "Mod+Shift+S".action.screenshot = [];
-      "Print".action.screenshot = [];
-
-      "Mod+Ctrl+Shift+S".action.spawn = ["niri-screen-recorder" "toggle"];
+      "Print".action.spawn = ["dms" "ipc" "call" "quickCapture" "screenshot" "region" "edit"];
+      "Mod+Ctrl+Shift+S".action.spawn = ["dms" "ipc" "call" "screenCaptureToolbar" "toggle"];
 
       "Mod+Shift+Slash".action = show-hotkey-overlay;
 
-      "Ctrl+Alt+Delete".action.spawn = ["${powerMenu}"];
+      "Ctrl+Alt+Delete".action.spawn = ["dms" "ipc" "call" "powermenu" "toggle"];
 
-      "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+" "--limit" "1.0"];
+      "XF86AudioRaiseVolume".action.spawn = ["dms" "ipc" "call" "audio" "increment" "10"];
       "XF86AudioRaiseVolume".allow-when-locked = true;
-      "XF86AudioLowerVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"];
+      "XF86AudioLowerVolume".action.spawn = ["dms" "ipc" "call" "audio" "decrement" "10"];
       "XF86AudioLowerVolume".allow-when-locked = true;
-      "XF86AudioMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"];
+      "XF86AudioMute".action.spawn = ["dms" "ipc" "call" "audio" "mute"];
       "XF86AudioMute".allow-when-locked = true;
-      "XF86AudioMicMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"];
+      "XF86AudioMicMute".action.spawn = ["dms" "ipc" "call" "mic" "mute"];
       "XF86AudioMicMute".allow-when-locked = true;
-      "XF86AudioPlay".action.spawn = ["playerctl" "play-pause"];
+      "XF86AudioPlay".action.spawn = ["dms" "ipc" "call" "mpris" "playPause"];
       "XF86AudioPlay".allow-when-locked = true;
-      "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "5%-"];
-      "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "5%+"];
+      "XF86AudioNext".action.spawn = ["dms" "ipc" "call" "mpris" "next"];
+      "XF86AudioNext".allow-when-locked = true;
+      "XF86AudioPrev".action.spawn = ["dms" "ipc" "call" "mpris" "previous"];
+      "XF86AudioPrev".allow-when-locked = true;
+      "XF86AudioStop".action.spawn = ["dms" "ipc" "call" "mpris" "stop"];
+      "XF86AudioStop".allow-when-locked = true;
+      "XF86MonBrightnessDown".action.spawn = ["dms" "ipc" "call" "brightness" "decrement" "5" ""];
+      "XF86MonBrightnessDown".allow-when-locked = true;
+      "XF86MonBrightnessUp".action.spawn = ["dms" "ipc" "call" "brightness" "increment" "5" ""];
+      "XF86MonBrightnessUp".allow-when-locked = true;
 
       "Mod+Z".action = toggle-overview;
     }

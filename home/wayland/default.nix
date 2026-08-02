@@ -1,12 +1,8 @@
 {pkgs, ...}: {
   imports = [
+    ./dms
     ./gtk
-    ./hypridle
-    ./hyprlock
     ./niri
-    ./quickshell
-    ./waybar
-    ./wlsunset
     ./vicinae
   ];
 
@@ -14,19 +10,20 @@
     amberol
     (celluloid.override {youtubeSupport = true;})
     file-roller
+    grim
+    imagemagick
+    img2pdf
+    jq
     loupe
     nautilus
     pwvucontrol
-
-    cliphist
-    hyprpicker
-
-    networkmanagerapplet
-    brightnessctl
+    satty
+    slurp
+    tesseract
+    wl-clipboard
+    zbar
 
     xwayland-satellite
-
-    nmgui
   ];
 
   xdg = {

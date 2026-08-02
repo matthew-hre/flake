@@ -23,10 +23,6 @@
 
       (lib.mkIf cfg.fingerprintPam.enable {
         security.pam.services = {
-          hyprlock = {
-            text = "auth include login";
-            enableGnomeKeyring = true;
-          };
           "polkit-1".fprintAuth = true;
           greetd.enableGnomeKeyring = true;
           login.enableGnomeKeyring = true;

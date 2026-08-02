@@ -2,8 +2,13 @@
   description = "NixOS configuration";
 
   inputs = {
-    awww = {
-      url = "git+https://codeberg.org/LGFae/awww";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -63,25 +68,11 @@
       flake = false;
     };
 
-    niri-screen-recorder = {
-      url = "github:matthew-hre/niri-screen-recorder";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    quickshell-config = {
-      url = "github:matthew-hre/quickshell-config";
     };
 
     sidra = {
@@ -91,11 +82,6 @@
 
     solaar = {
       url = "github:Svenum/Solaar-Flake/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    stash = {
-      url = "github:NotAShelf/stash/f6818c9e6f2e4da4f8e7966ba4a96a317e1ad530";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

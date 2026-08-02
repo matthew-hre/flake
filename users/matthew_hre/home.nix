@@ -32,6 +32,7 @@
       pciutils
       usbutils
       xclip
+      tray-tui
       inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.cursor-agent
       inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.amp
       inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.claude-code

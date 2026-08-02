@@ -19,9 +19,6 @@
           {
             app-id = "steam";
           }
-          {
-            title = "^notificationtoasts_\d+_desktop$";
-          }
         ];
         default-floating-position = {
           x = 10;
@@ -66,7 +63,10 @@
       {
         matches = [
           {
-            namespace = "^awww-daemon$";
+            namespace = "^quickshell$";
+          }
+          {
+            namespace = "^dms:blurwallpaper$";
           }
         ];
         place-within-backdrop = true;

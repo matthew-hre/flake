@@ -4,10 +4,6 @@
   pkgs,
   ...
 }: let
-  makeCommand = command: {
-    command = [command];
-  };
-
   isDesktop = hostname == "donkeykong";
 in {
   imports = [
@@ -29,13 +25,6 @@ in {
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         SDL_VIDEODRIVER = "wayland";
       };
-
-      spawn-at-startup = [
-        (makeCommand "awww-daemon")
-        (makeCommand "NetworkManager")
-        (makeCommand "qs")
-        {command = ["stash" "watch"];}
-      ];
 
       cursor = {
         theme = "BreezeX-Dark";

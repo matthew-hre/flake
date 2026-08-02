@@ -6,10 +6,10 @@
   gtk = {
     enable = true;
     gtk4.theme = config.gtk.theme;
-    theme = {
-      package = pkgs.dracula-theme;
-      name = "Dracula";
-    };
+    #theme = {
+    #  package = pkgs.dracula-theme;
+    #  name = "Dracula";
+    #};
     iconTheme = {
       package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";
