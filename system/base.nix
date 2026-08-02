@@ -10,6 +10,7 @@
     inputs.helium.defaultPackage.x86_64-linux
 
     inputs.ink.packages.x86_64-linux.default
+    inputs.sidra.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     libnotify
     nomacs
@@ -38,6 +39,7 @@
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
+    fallback = true;
 
     extra-substituters = [
       "https://zed.cachix.org"

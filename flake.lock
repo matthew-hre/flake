@@ -918,6 +918,7 @@
         "nvf": "nvf",
         "quickshell": "quickshell",
         "quickshell-config": "quickshell-config",
+        "sidra": "sidra",
         "solaar": "solaar",
         "stash": "stash",
         "vicinae": "vicinae",
@@ -984,6 +985,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sidra": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785671974,
+        "narHash": "sha256-DDOt1+X9ACm+Fgs6OZyqrW4XxL3NkrX/ejk/9FeC2n0=",
+        "owner": "wimpysworld",
+        "repo": "sidra",
+        "rev": "447c47f24a12134959f68a9adf1559827e3aca68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wimpysworld",
+        "repo": "sidra",
         "type": "github"
       }
     },
