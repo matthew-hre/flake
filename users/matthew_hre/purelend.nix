@@ -83,9 +83,16 @@
   systemd.user.sessionVariables.PATH =
     "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/share/mise/shims:$HOME/.local/bin\${PATH:+:\$PATH}";
 
-  programs.fish.shellInit = lib.mkAfter ''
-    if not status is-interactive
-        ${lib.getExe pkgs.mise} activate fish --shims | source
-    end
-  '';
+  programs.fish.shellInit = lib.mkMerge [
+    (lib.mkBefore ''
+      # Graphical/systemd sessions can export __HM_SESS_VARS_SOURCED without nix on PATH,
+      # which makes hm-session-vars.fish skip PATH setup. Ensure HM tools resolve anyway.
+      fish_add_path -m $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin
+    '')
+    (lib.mkAfter ''
+      if not status is-interactive
+          ${lib.getExe pkgs.mise} activate fish --shims | source
+      end
+    '')
+  ];
 }
