@@ -10,7 +10,6 @@
     inputs.helium.defaultPackage.x86_64-linux
 
     inputs.ink.packages.x86_64-linux.default
-    inputs.sidra.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     libnotify
     nomacs

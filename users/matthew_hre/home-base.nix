@@ -1,4 +1,8 @@
 {
+  imports = [
+    ../../home/programs/sidra.nix
+  ];
+
   home = {
     username = "matthew_hre";
     homeDirectory = "/home/matthew_hre";

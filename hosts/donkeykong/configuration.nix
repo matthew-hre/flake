@@ -77,7 +77,6 @@
     prismlauncher
     protonup-qt
     filezilla
-    tidal-hifi
     rocmPackages.rocm-smi
     satisfactorymodmanager
   ];
