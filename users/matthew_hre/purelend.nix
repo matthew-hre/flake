@@ -6,6 +6,8 @@
   # Gradual HM cutover on Debian (toad dual-boot). Add modules one at a time.
   imports = [
     ./home-base.nix
+    ../../home/configs/nix-caches.nix
+    ../../home/ai
     ../../home/configs/bat.nix # pager used by git
     ../../home/configs/btop.nix
     ../../home/configs/direnv.nix
