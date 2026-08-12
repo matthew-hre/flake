@@ -65,36 +65,19 @@
     shell-integration-features = lib.mkForce "cursor,sudo,title,no-cursor";
   };
 
-  # mise CLI via nix-profile (agents already have ~/.nix-profile/bin on PATH).
-  # Interactive fish: HM `activate`. Non-interactive/IDE: shims on session PATH.
-  # https://mise.en.dev/dev-tools/shims.html
-  programs.mise = {
-    enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-  };
-
   # niri-session imports systemd user env (not your shell). Keep nix/HM on PATH there.
   home.sessionPath = [
     "$HOME/.nix-profile/bin"
     "/nix/var/nix/profiles/default/bin"
-    "$HOME/.local/share/mise/shims"
     "$HOME/.local/bin"
   ];
 
   systemd.user.sessionVariables.PATH =
-    "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/share/mise/shims:$HOME/.local/bin\${PATH:+:\$PATH}";
+    "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin\${PATH:+:\$PATH}";
 
-  programs.fish.shellInit = lib.mkMerge [
-    (lib.mkBefore ''
-      # Graphical/systemd sessions can export __HM_SESS_VARS_SOURCED without nix on PATH,
-      # which makes hm-session-vars.fish skip PATH setup. Ensure HM tools resolve anyway.
-      fish_add_path -m $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin
-    '')
-    (lib.mkAfter ''
-      if not status is-interactive
-          ${lib.getExe pkgs.mise} activate fish --shims | source
-      end
-    '')
-  ];
+  programs.fish.shellInit = lib.mkBefore ''
+    # Graphical/systemd sessions can export __HM_SESS_VARS_SOURCED without nix on PATH,
+    # which makes hm-session-vars.fish skip PATH setup. Ensure HM tools resolve anyway.
+    fish_add_path -m $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin
+  '';
 }
