@@ -109,10 +109,6 @@
           soft-wrap.enable = true;
         }
         {
-          name = "python";
-          language-servers = ["ty" "ruff" "harper-ls"];
-        }
-        {
           name = "bash";
           language-servers = ["bash-language-server" "harper-ls"];
         }

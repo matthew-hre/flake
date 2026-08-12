@@ -20,7 +20,7 @@
     ../../home/configs/jujutsu.nix
     ../../home/shell/ghostty.nix
     ../../home/editors/language-servers.nix
-    # ../../home/editors/helix  # next: merge local ~/.config/helix
+    ../../home/editors/helix
   ];
 
   targets.genericLinux.enable = true;
