@@ -45,10 +45,13 @@ in {
         };
 
         oxlint = {
+          # Temp files cannot live in .jj/: oxlint treats it as a VCS dir and
+          # reports "No files found to lint". Remaining diagnostics also exit 1;
+          # jj fix only keeps stdout when the wrapper exits 0.
           command = [
             "sh"
             "-c"
-            ''set -e; ext="''${2##*.}"; t=$(mktemp -p "$1/.jj" --suffix=".$ext" jj-fix-XXXXXX); trap 'rm -f "$t"' EXIT; cat > "$t"; "$3" --fix "$t" >/dev/null; cat "$t"''
+            ''set -e; root="$1"; path="$2"; oxlint="$3"; tmpdir=$(mktemp -d); trap 'rm -rf "$tmpdir"' EXIT; out="$tmpdir/$path"; mkdir -p "$(dirname "$out")"; cat > "$out"; "$oxlint" --fix "$out" >/dev/null || true; cat "$out"''
             "_"
             "$root"
             "$path"

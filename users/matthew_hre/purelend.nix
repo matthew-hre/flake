@@ -3,12 +3,11 @@
   pkgs,
   ...
 }: {
-  # Gradual HM cutover on Debian (toad dual-boot). Add modules one at a time.
   imports = [
     ./home-base.nix
     ../../home/configs/nix-caches.nix
     ../../home/ai
-    ../../home/configs/bat.nix # pager used by git
+    ../../home/configs/bat.nix
     ../../home/configs/btop.nix
     ../../home/configs/direnv.nix
     ../../home/configs/fastfetch.nix
@@ -47,11 +46,9 @@
     zip
   ];
 
-  # Work identity on this host (personal email stays the NixOS default).
   programs.git.settings.user.email = lib.mkForce "matthew@purelend.ai";
   programs.jujutsu.settings.user.email = lib.mkForce "matthew@purelend.ai";
 
-  # themes.gitconfig is not present on this machine yet.
   programs.git.settings.include = lib.mkForce {};
 
   programs.ghostty.settings = {
@@ -59,21 +56,18 @@
     background-blur = lib.mkForce false;
     background-opacity = lib.mkForce 1.0;
 
-    # genericLinux keeps bash in passwd; launch fish explicitly in ghostty.
     command = lib.mkForce "${pkgs.fish}/bin/fish";
     shell-integration = lib.mkForce "fish";
     shell-integration-features = lib.mkForce "cursor,sudo,title,no-cursor";
   };
 
-  # niri-session imports systemd user env (not your shell). Keep nix/HM on PATH there.
   home.sessionPath = [
     "$HOME/.nix-profile/bin"
     "/nix/var/nix/profiles/default/bin"
     "$HOME/.local/bin"
   ];
 
-  systemd.user.sessionVariables.PATH =
-    "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin\${PATH:+:\$PATH}";
+  systemd.user.sessionVariables.PATH = "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin\${PATH:+:\$PATH}";
 
   programs.fish.shellInit = lib.mkBefore ''
     # Graphical/systemd sessions can export __HM_SESS_VARS_SOURCED without nix on PATH,
