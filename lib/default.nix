@@ -18,7 +18,31 @@ in {
           ../users/matthew_hre/${hostname}.nix
           ../users/vik
           {
-            nixpkgs.overlays = [inputs.niri.overlays.niri];
+            # niri-flake's overlay is broken on current nixos-unstable — its
+            # make-niri calls callPackage which auto-fills libdisplay-info_0_2
+            # (removed from nixpkgs). Build niri-unstable ourselves from the
+            # niri-custom source using nixpkgs' niri package as a base, which
+            # correctly links against libdisplay-info 0.3+.
+            # See https://github.com/sodiboo/niri-flake/issues/1851
+            nixpkgs.overlays = [
+              (final: prev: {
+                niri-unstable = prev.niri.overrideAttrs (finalAttrs: previousAttrs: {
+                  version = "unstable";
+                  src = inputs.niri-custom;
+                  # overrideAttrs runs after buildRustPackage has already
+                  # processed cargoHash into cargoDeps, so we must replace
+                  # cargoDeps directly rather than setting cargoLock/cargoHash.
+                  cargoDeps = prev.rustPlatform.importCargoLock {
+                    lockFile = "${inputs.niri-custom}/Cargo.lock";
+                    allowBuiltinFetchGit = true;
+                  };
+                  doInstallCheck = false;
+                  meta = previousAttrs.meta // {
+                    changelog = "https://github.com/niri-wm/niri/commits/main";
+                  };
+                });
+              })
+            ];
             environment.systemPackages = [
               inputs.ghostty.packages.${system}.default
             ];
