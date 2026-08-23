@@ -29,15 +29,21 @@
     fd
     gh
     glow
+    google-cloud-sdk
     lazygit
     lazydocker
     ltrace
     nix-output-monitor
+    nodejs_24
     onefetch
+    opentofu
     p7zip
     pciutils
+    pnpm
     ripgrep
     strace
+    stripe-cli
+    supabase-cli
     unzip
     usbutils
     wl-clipboard
@@ -48,6 +54,19 @@
 
   programs.git.settings.user.email = lib.mkForce "matthew@purelend.ai";
   programs.jujutsu.settings.user.email = lib.mkForce "matthew@purelend.ai";
+
+  programs.ssh.matchBlocks."knot.matthew-hre.com" = {
+    identityFile = "~/.ssh/id_ed25519_tangled";
+    identitiesOnly = true;
+  };
+
+  programs.ssh.matchBlocks."tangled.org" = {
+    hostname = "tangled.org";
+    user = "git";
+    identityFile = "~/.ssh/id_ed25519_tangled";
+    identitiesOnly = true;
+    addressFamily = "inet";
+  };
 
   programs.git.settings.include = lib.mkForce {};
 

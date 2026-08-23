@@ -22,10 +22,5 @@
       user = "git";
       addressFamily = "inet";
     };
-
-    extraConfig = "
-Host *
-  IdentityAgent ~/.1password/agent.sock
-    ";
   };
 }

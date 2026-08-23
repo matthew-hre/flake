@@ -100,19 +100,9 @@ Also ships via wayland module: amberol, celluloid, nautilus, loupe, file-roller,
 
 ---
 
-## mise tools (optional cutover)
+## Work development tools
 
-Not in the flake. `mise` itself is not on PATH; leftover installs live in `~/.local/share/mise`. `~/.config/mise/config.toml` only pins `node = "22.17.1"`. Could stay as-is or move to `home.packages` / `programs.mise` / dev shells.
-
-| Tool | leftover install |
-|------|------------------|
-| bun | 1.3.14 |
-| gcloud | 569.0.0 |
-| node | 22.17.1 (pinned) |
-| opentofu | 1.10.1 / 1.12.2 |
-| pnpm | 10.16.0 |
-| stripe | 1.42.13 |
-| supabase | 2.101.0 |
+Node, pnpm, gcloud, OpenTofu, Stripe CLI, and Supabase CLI are managed in the `purelend` Home Manager profile. Work repositories use the global Node 24 runtime, while pnpm honors each repository's `packageManager` version. No per-repository dev shell or version-manager activation is required.
 
 ---
 
