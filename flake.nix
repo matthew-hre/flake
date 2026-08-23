@@ -70,11 +70,6 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     sidra = {
       url = "github:wimpysworld/sidra";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -88,11 +83,6 @@
     vicinae = {
       url = "github:vicinaehq/vicinae";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Don't follow nixpkgs — Zed's livekit build breaks with mismatched nixpkgs
-    zed = {
-      url = "github:zed-industries/zed";
     };
   };
 

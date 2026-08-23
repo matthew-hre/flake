@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./home-base.nix
-    ../../home/configs/nix-caches.nix
     ../../home/ai
     ../../home/configs/bat.nix
     ../../home/configs/btop.nix

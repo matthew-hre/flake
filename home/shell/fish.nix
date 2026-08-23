@@ -41,7 +41,6 @@
       ":q" = "exit";
       find = "fd";
       nvim = "hx";
-      code = "zed";
     };
     functions = {
       fish_prompt = ''

@@ -97,6 +97,7 @@ Also ships via wayland module: amberol, celluloid, nautilus, loupe, file-roller,
 | Vanta | apt (`vanta`) | Not in flake | Enterprise agent — keep apt |
 | pipx | apt (`pipx`) + `~/.local/bin/pipx` | Not in flake | Keep; manages Python tools outside nix |
 | snapd | apt | Not in flake | Debian infra — keep |
+| Nix daemon caches | `/etc/nix/nix.custom.conf` | NixOS uses `lib/caches.nix` | Keep system-managed on Debian; Home Manager must not require root |
 
 ---
 
