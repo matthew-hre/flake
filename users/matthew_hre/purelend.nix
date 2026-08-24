@@ -2,7 +2,29 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  recordRegion = pkgs.writeShellApplication {
+    name = "record-region";
+    runtimeInputs = with pkgs; [
+      coreutils
+      slurp
+      wf-recorder
+      wl-clipboard
+    ];
+    text = ''
+      geometry="$(slurp)" || exit 1
+      output_dir="''${XDG_VIDEOS_DIR:-$HOME/Videos}/Screen Recordings"
+      output="$output_dir/screen-recording-$(date +%Y-%m-%d_%H-%M-%S).mp4"
+
+      mkdir -p "$output_dir"
+      echo "Recording $geometry; press Ctrl+C to stop."
+      wf-recorder -g "$geometry" -f "$output"
+
+      wl-copy --type video/mp4 < "$output"
+      echo "Saved and copied to the clipboard: $output"
+    '';
+  };
+in {
   imports = [
     ./home-base.nix
     ../../home/ai
@@ -29,6 +51,7 @@
     gh
     glow
     google-cloud-sdk
+    gpu-screen-recorder
     lazygit
     lazydocker
     ltrace
@@ -39,12 +62,15 @@
     p7zip
     pciutils
     pnpm
+    recordRegion
     ripgrep
+    slurp
     strace
     stripe-cli
     supabase-cli
     unzip
     usbutils
+    wf-recorder
     wl-clipboard
     xclip
     xz
