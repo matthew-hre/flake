@@ -79,17 +79,20 @@
     shell-integration-features = lib.mkForce "cursor,sudo,title,no-cursor";
   };
 
+  home.sessionVariables.PNPM_HOME = "$HOME/.local/share/pnpm";
+
   home.sessionPath = [
     "$HOME/.nix-profile/bin"
     "/nix/var/nix/profiles/default/bin"
     "$HOME/.local/bin"
+    "$HOME/.local/share/pnpm/bin"
   ];
 
-  systemd.user.sessionVariables.PATH = "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin\${PATH:+:\$PATH}";
+  systemd.user.sessionVariables.PATH = "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin:$HOME/.local/share/pnpm/bin\${PATH:+:\$PATH}";
 
   programs.fish.shellInit = lib.mkBefore ''
     # Graphical/systemd sessions can export __HM_SESS_VARS_SOURCED without nix on PATH,
     # which makes hm-session-vars.fish skip PATH setup. Ensure HM tools resolve anyway.
-    fish_add_path -m $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin
+    fish_add_path -m $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.local/share/pnpm/bin
   '';
 }
