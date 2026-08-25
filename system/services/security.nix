@@ -3,30 +3,16 @@
   lib,
   ...
 }: {
-  options.modules.services.security = {
-    enable = lib.mkEnableOption "base security";
-    fingerprintPam.enable = lib.mkEnableOption "fingerprint PAM integration";
+  options.modules.services.security.fingerprintPam.enable = lib.mkEnableOption "fingerprint PAM integration";
+
+  config = {
+    security.sudo.enable = true;
+    security.rtkit.enable = true;
+    security.pam.services = {
+      greetd.enableGnomeKeyring = true;
+      login.enableGnomeKeyring = true;
+    };
+
+    security.pam.services."polkit-1".fprintAuth = config.modules.services.security.fingerprintPam.enable;
   };
-
-  config = let
-    cfg = config.modules.services.security;
-  in
-    lib.mkMerge [
-      {
-        security.sudo.enable = true;
-        security.rtkit.enable = true;
-        security.pam.services = {
-          greetd.enableGnomeKeyring = true;
-          login.enableGnomeKeyring = true;
-        };
-      }
-
-      (lib.mkIf cfg.fingerprintPam.enable {
-        security.pam.services = {
-          "polkit-1".fprintAuth = true;
-          greetd.enableGnomeKeyring = true;
-          login.enableGnomeKeyring = true;
-        };
-      })
-    ];
 }

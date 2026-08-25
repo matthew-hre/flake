@@ -3,10 +3,9 @@
   lib,
   ...
 }: {
-  options.modules.hardware.bluetooth.enable = lib.mkEnableOption "bluetooth support";
   options.modules.hardware.bluetooth.enableControllerSupport = lib.mkEnableOption "controller support";
 
-  config = lib.mkIf config.modules.hardware.bluetooth.enable {
+  config = {
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;

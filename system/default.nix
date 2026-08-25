@@ -3,8 +3,6 @@
     ./base.nix
     ./hardware/amd.nix
     ./hardware/bluetooth.nix
-    ./hardware/fprintd.nix
-    ./hardware/fwupd.nix
     ./programs/discord.nix
     ./programs/fonts.nix
     ./programs/libre.nix
@@ -18,7 +16,6 @@
     ./services/openssh.nix
     ./services/vpn.nix
     ./services/pipewire.nix
-    ./services/power.nix
     ./services/security.nix
   ];
 }

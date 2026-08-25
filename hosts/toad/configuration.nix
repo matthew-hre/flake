@@ -2,32 +2,12 @@
   imports = [
     ./hardware-configuration.nix
     ../../system
+    ../../system/hardware/fprintd.nix
+    ../../system/hardware/fwupd.nix
+    ../../system/services/power.nix
   ];
 
-  modules = {
-    hardware.amd.enable = true;
-    hardware.bluetooth.enable = true;
-    hardware.fprintd.enable = true;
-    hardware.fwupd.enable = true;
-
-    programs.discord.enable = true;
-    programs.fonts.enable = true;
-    programs.libre.enable = true;
-    programs.niri.enable = true;
-    programs.steam.enable = true;
-    programs.xdg.enable = true;
-
-    services.boot.enable = true;
-    services.docker.enable = true;
-    services.greetd.enable = true;
-    services.network.enable = true;
-    services.openssh.enable = true;
-    services.vpn.enable = true;
-    services.pipewire.enable = true;
-    services.power.enable = true;
-    services.security.enable = true;
-    services.security.fingerprintPam.enable = true;
-  };
+  modules.services.security.fingerprintPam.enable = true;
 
   networking.hostName = "toad";
 
