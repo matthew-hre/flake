@@ -1,20 +1,19 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../system
-
-    inputs.solaar.nixosModules.default
   ];
 
-  modules.hardware.bluetooth.enableControllerSupport = true;
+  hardware.bluetooth.settings.General = {
+    Privacy = "device";
+    JustWorksRepairing = "true";
+    Class = "0x000100";
+    FastConnectable = "true";
+  };
+  hardware.xpadneo.enable = true;
 
   networking.hostName = "donkeykong";
   networking.interfaces.eno1.wakeOnLan.enable = true;
@@ -62,12 +61,6 @@
   ];
 
   programs.kdeconnect.enable = true;
-
-  services.solaar.enable = true;
-
-  hardware.logitech.wireless.enable = true;
-
-  boot.extraModulePackages = with config.boot.kernelPackages; [xpadneo];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

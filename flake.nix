@@ -75,11 +75,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    solaar = {
-      url = "github:Svenum/Solaar-Flake/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     vicinae = {
       url = "github:vicinaehq/vicinae";
       inputs.nixpkgs.follows = "nixpkgs";

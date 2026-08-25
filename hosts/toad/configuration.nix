@@ -7,7 +7,7 @@
     ../../system/services/power.nix
   ];
 
-  modules.services.security.fingerprintPam.enable = true;
+  security.pam.services."polkit-1".fprintAuth = true;
 
   networking.hostName = "toad";
 

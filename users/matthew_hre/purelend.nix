@@ -105,6 +105,20 @@ in {
     shell-integration-features = lib.mkForce "cursor,sudo,title,no-cursor";
   };
 
+  programs.fish.functions.nom-shell = ''
+    for arg in $argv
+      switch $arg
+        case --run --command '--run=*' '--command=*' --help --version
+          command nom-shell $argv
+          return
+      end
+    end
+
+    command nom-shell $argv --run fish
+  '';
+
+  programs.fish.shellAliases.nix-shell = "nom-shell";
+
   home.sessionVariables.PNPM_HOME = "$HOME/.local/share/pnpm";
 
   home.sessionPath = [
@@ -117,8 +131,15 @@ in {
   systemd.user.sessionVariables.PATH = "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin:$HOME/.local/share/pnpm/bin\${PATH:+:\$PATH}";
 
   programs.fish.shellInit = lib.mkBefore ''
+    # Determinate Nix supplies nixpkgs through nix.conf; an inherited channel path
+    # masks it and breaks nix-shell when that channel no longer exists.
+    set -e NIX_PATH
+
     # Graphical/systemd sessions can export __HM_SESS_VARS_SOURCED without nix on PATH,
-    # which makes hm-session-vars.fish skip PATH setup. Ensure HM tools resolve anyway.
-    fish_add_path -m $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.local/share/pnpm/bin
+    # which makes hm-session-vars.fish skip PATH setup. Add missing HM paths without
+    # overriding paths supplied by dev shells.
+    for path in $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.local/share/pnpm/bin
+      contains -- $path $PATH; or set -ga PATH $path
+    end
   '';
 }
