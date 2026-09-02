@@ -4,13 +4,18 @@
   agentAlias = pkgs.writeShellScriptBin "agent" ''
     exec ${lib.getExe agents.cursor-agent} "$@"
   '';
+  parallelCli = pkgs.writeShellScriptBin "parallel-cli" ''
+    exec "$HOME/.local/share/parallel-cli/parallel-cli" "$@"
+  '';
 in {
-  home.packages = with agents; [
+  home.packages = (with agents; [
     cursor-agent
     agentAlias
     amp
     claude-code
     codex
     crush
+  ]) ++ [
+    parallelCli
   ];
 }

@@ -1,7 +1,4 @@
-{
-  inputs,
-  ...
-}: let
+{inputs, ...}: let
   user = {
     name = "Matthew Hrehirchuk";
     email = "me@matthew-hre.com";
@@ -18,6 +15,7 @@ in {
         init = ["git" "init" "--colocate"];
         tug = ["bookmark" "advance"];
         jj = ["util" "exec" "--" "jj"];
+        set-trunk = ["config" "set" "--repo" "'revset-aliases.\"trunk()\"'"];
       };
 
       templates.git_push_bookmark = "\"matthew-hre/jj-\" ++ change_id.short()";

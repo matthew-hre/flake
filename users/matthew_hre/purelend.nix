@@ -138,7 +138,7 @@ in {
     # Graphical/systemd sessions can export __HM_SESS_VARS_SOURCED without nix on PATH,
     # which makes hm-session-vars.fish skip PATH setup. Add missing HM paths without
     # overriding paths supplied by dev shells.
-    for path in $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.local/share/pnpm/bin
+    for path in $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.local/bin $HOME/.local/share/pnpm/bin
       contains -- $path $PATH; or set -ga PATH $path
     end
   '';
