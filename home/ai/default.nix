@@ -1,4 +1,9 @@
-{inputs, pkgs, lib, ...}: let
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: let
   system = pkgs.stdenv.hostPlatform.system;
   agents = inputs.llm-agents.packages.${system};
   agentAlias = pkgs.writeShellScriptBin "agent" ''
@@ -8,14 +13,15 @@
     exec "$HOME/.local/share/parallel-cli/parallel-cli" "$@"
   '';
 in {
-  home.packages = (with agents; [
-    cursor-agent
-    agentAlias
-    amp
-    claude-code
-    codex
-    crush
-  ]) ++ [
-    parallelCli
-  ];
+  home.packages =
+    (with agents; [
+      cursor-agent
+      agentAlias
+      amp
+      crush
+      opencode2
+    ])
+    ++ [
+      parallelCli
+    ];
 }
