@@ -1,4 +1,9 @@
-{inputs, ...}: let
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}: let
   user = {
     name = "Matthew Hrehirchuk";
     email = "me@matthew-hre.com";
@@ -10,6 +15,10 @@ in {
 
     settings = {
       inherit user;
+
+      # jj git * shells out to this binary. Pin the nix git so Debian 2.47
+      # cannot reject repos that use extensions.relativeWorktrees.
+      git.executable-path = lib.getExe pkgs.git;
 
       aliases = {
         init = ["git" "init" "--colocate"];

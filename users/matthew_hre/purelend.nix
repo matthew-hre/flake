@@ -135,11 +135,22 @@ in {
     # masks it and breaks nix-shell when that channel no longer exists.
     set -e NIX_PATH
 
-    # Graphical/systemd sessions can export __HM_SESS_VARS_SOURCED without nix on PATH,
-    # which makes hm-session-vars.fish skip PATH setup. Add missing HM paths without
-    # overriding paths supplied by dev shells.
-    for path in $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.local/bin $HOME/.local/share/pnpm/bin
-      contains -- $path $PATH; or set -ga PATH $path
+    # Graphical/systemd sessions can export __HM_SESS_VARS_SOURCED without nix
+    # on PATH, which makes hm-session-vars.fish skip PATH setup. Put HM paths
+    # first so nix git (2.48+) wins over Debian /usr/bin/git. Leave nix-shell
+    # PATH alone so store paths stay in front.
+    set -l hm_paths $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.local/bin $HOME/.local/share/pnpm/bin
+    if set -q IN_NIX_SHELL
+      for path in $hm_paths
+        contains -- $path $PATH; or set -ga PATH $path
+      end
+    else
+      for path in $hm_paths
+        while set -l idx (contains -i -- $path $PATH)
+          set -e PATH[$idx]
+        end
+      end
+      set -p PATH $hm_paths
     end
   '';
 }
