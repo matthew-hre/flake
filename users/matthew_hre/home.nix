@@ -29,7 +29,6 @@
       nix-output-monitor
       nh
       strace
-      ltrace
       pciutils
       usbutils
       xclip

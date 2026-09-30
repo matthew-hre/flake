@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: let
+  portless = pkgs.callPackage ../../pkgs/portless/package.nix {};
   recordRegion = pkgs.writeShellApplication {
     name = "record-region";
     runtimeInputs = with pkgs; [
@@ -54,7 +55,6 @@ in {
     gpu-screen-recorder
     lazygit
     lazydocker
-    ltrace
     nix-output-monitor
     nodejs_24
     onefetch
@@ -62,6 +62,7 @@ in {
     p7zip
     pciutils
     pnpm
+    portless
     recordRegion
     ripgrep
     slurp
