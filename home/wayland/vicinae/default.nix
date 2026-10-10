@@ -1,10 +1,18 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.vicinae.homeManagerModules.default
   ];
 
   programs.vicinae = {
     enable = true;
+    # Upstream forces GCC 15, but numen uses nixpkgs' default C++ runtime.
+    package = inputs.vicinae.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+      gcc15Stdenv = pkgs.stdenv;
+    };
     systemd = {
       enable = true;
       autoStart = true;
