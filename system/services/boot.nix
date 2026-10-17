@@ -7,7 +7,7 @@
       enable = true;
       efiSupport = true;
       device = "nodev";
-      configurationLimit = 8;
+      configurationLimit = 4;
     };
   };
 }
