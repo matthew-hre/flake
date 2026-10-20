@@ -4,6 +4,12 @@
   ...
 }: let
   portless = pkgs.callPackage ../../pkgs/portless/package.nix {};
+  sessionPaths = [
+    "$HOME/.nix-profile/bin"
+    "/nix/var/nix/profiles/default/bin"
+    "$HOME/.local/bin"
+    "$HOME/.local/share/pnpm/bin"
+  ];
   recordRegion = pkgs.writeShellApplication {
     name = "record-region";
     runtimeInputs = with pkgs; [
@@ -122,14 +128,28 @@ in {
 
   home.sessionVariables.PNPM_HOME = "$HOME/.local/share/pnpm";
 
-  home.sessionPath = [
-    "$HOME/.nix-profile/bin"
-    "/nix/var/nix/profiles/default/bin"
-    "$HOME/.local/bin"
-    "$HOME/.local/share/pnpm/bin"
-  ];
+  home.sessionPath = sessionPaths;
 
-  systemd.user.sessionVariables.PATH = "$HOME/.nix-profile/bin:/nix/var/nix/profiles/default/bin:$HOME/.local/bin:$HOME/.local/share/pnpm/bin\${PATH:+:\$PATH}";
+  systemd.user.sessionVariables.PATH = "${lib.concatStringsSep ":" sessionPaths}\${PATH:+:\$PATH}";
+
+  # niri-session re-execs through a login shell, where Debian's /etc/profile resets PATH after an earlier
+  # ~/.profile already set __HM_SESS_VARS_SOURCED, so hm-session-vars.sh skips PATH. systemd then imports that
+  # PATH, and every app it launches inherits it.
+  programs.bash.profileExtra = ''
+    session_path_prefix="${lib.concatStringsSep ":" sessionPaths}"
+    other_paths=""
+    saved_ifs=$IFS
+    IFS=:
+    for entry in $PATH; do
+      case ":$session_path_prefix:" in
+        *":$entry:"*) ;;
+        *) other_paths="$other_paths:$entry" ;;
+      esac
+    done
+    IFS=$saved_ifs
+    export PATH="$session_path_prefix$other_paths"
+    unset session_path_prefix other_paths saved_ifs entry
+  '';
 
   programs.fish.shellInit = lib.mkBefore ''
     # Determinate Nix supplies nixpkgs through nix.conf; an inherited channel path
@@ -140,7 +160,7 @@ in {
     # on PATH, which makes hm-session-vars.fish skip PATH setup. Put HM paths
     # first so nix git (2.48+) wins over Debian /usr/bin/git. Leave nix-shell
     # PATH alone so store paths stay in front.
-    set -l hm_paths $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $HOME/.local/bin $HOME/.local/share/pnpm/bin
+    set -l hm_paths ${lib.concatStringsSep " " sessionPaths}
     if set -q IN_NIX_SHELL
       for path in $hm_paths
         contains -- $path $PATH; or set -ga PATH $path

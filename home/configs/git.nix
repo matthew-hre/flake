@@ -7,9 +7,13 @@
     name = "Matthew Hrehirchuk";
     email = "me@matthew-hre.com";
   };
+  hunk = import ../../pkgs/hunk {
+    hunk = inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk;
+    lib = pkgs.lib;
+  };
 in {
   home.packages = [
-    inputs.hunk.packages.${pkgs.stdenv.hostPlatform.system}.hunk
+    hunk
   ];
 
   programs.git = {

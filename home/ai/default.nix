@@ -24,6 +24,8 @@ in {
   home.packages =
     (with agents; [
       cursor-agent
+      claude-code
+      claude-desktop
       agentAlias
       amp
       crush
